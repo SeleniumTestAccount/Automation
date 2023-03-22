@@ -16,6 +16,7 @@ import TestLib.Common;
 import TestLib.Sync;
 import Utilities.ExcelReader;
 import Utilities.ExtenantReportUtils;
+import Utilities.Utils;
 
 public class FlyPegionHelper {
 
@@ -310,6 +311,121 @@ public class FlyPegionHelper {
 			Assert.fail();
 		}
 	}
+
+	public void Click_Sign_Up() {
+		// TODO Auto-generated method stub
+		try
+		{
+			Sync.waitElementPresent("xpath", "//button[text()='Login as Agent']");
+			Common.clickElement("xpath", "//button[text()='Login as Agent']");
+			Sync.waitPageLoad();
+			Thread.sleep(3000);
+			String login=Common.findElement("xpath", "//h2[@class='txt-center']").getText();
+			Common.assertionCheckwithReport(
+					login.contains("Welcome Back"),
+					"To validate the Login page",
+					"After clicking on the login as agent button it should navigate to the Login page ",
+					"Sucessfully navigated to the login page after clicking on the Login as Agent button",
+					"Failed to Navigate to the Login page");
+			Sync.waitElementPresent("xpath", "//a[text()='Sign Up Here']");
+			Common.clickElement("xpath", "//a[text()='Sign Up Here']");
+			String signup=Common.findElement("xpath", "//div[contains(@class,'Signup')]//strong").getText();
+			Common.assertionCheckwithReport(
+					signup.contains("Sign Up"),
+					"To validate the signup page",
+					"After clicking on the signup here it should navigate to the signup page ",
+					"Sucessfully navigated to the signup page after click on the signup button",
+					"Failed to Navigate to the signup page");
+		}
+		catch(Exception | Error e)
+		{
+			e.printStackTrace();
+			ExtenantReportUtils.addFailedLog("To validate the signup page",
+					"After clicking on the signup here it should navigate to the signup page ",
+					"Unable to Navigate to the signup page after clicking on the signup button",
+					Common.getscreenShotPathforReport("Failed to Navigate to the signup page"));
+			Assert.fail();
+		}
+		
+	}
+
+	public void Sign_up() {
+		// TODO Auto-generated method stub
+		
+		try
+		{
+			Sync.waitElementPresent("xpath", "//input[@id='agent']");
+			Common.clickElement("xpath", "//input[@id='agent']");
+			Common.dropdown("xpath", "//select[@id='title']", Common.SelectBy.TEXT, "Mr");
+			Common.textBoxInput("xpath", "//input[@name='firstName']", "Test");
+			Common.textBoxInput("xpath", "//input[@name='lastName']", "Auto");
+			Common.clickElement("xpath", "//input[@type='date']");
+			Common.textBoxInput("xpath", "//input[@type='date']","03-01-2000");
+			Common.textBoxInput("xpath", "//input[@name='agencyName']", "PEGION");
+			Common.textBoxInput("xpath", "//input[@name='address']", " Delhi ");
+			Common.dropdown("xpath", "//select[@name='state']", Common.SelectBy.TEXT, "Delhi");
+			Common.textBoxInput("xpath", "//input[@name='city']", "New Delhi");
+			Common.textBoxInput("xpath", "//input[@name='pincode']", "110001");
+			String Country=Common.findElement("xpath", "//input[@name='country']").getAttribute("value");
+			Common.assertionCheckwithReport(
+					Country.contains("INDIA"),
+					"To validate the address fileds",
+					"After entring the details address fileds should be filled ",
+					"Sucessfully address fileds has been filled after entering the details",
+					"Failed to enter the details in the address field");
+			Common.textBoxInput("xpath", "//input[@name='panCardNo']", "ABCDE1234N");
+			String path = System.getProperty("user.dir") + ("\\src\\test\\resources\\TestData\\FlyPegion\\Screenshot.png");
+			Sync.waitElementPresent(40, "xpath", "//input[@name='panCardImage']");
+			Common.findElement("xpath", "//input[@name='panCardImage']").sendKeys(path);
+			Common.textBoxInput("xpath", "//input[@name='aadharCardNo']", "889977665544");
+			String path1 = System.getProperty("user.dir") + ("\\src\\test\\resources\\TestData\\FlyPegion\\Screenshot.png");
+			Sync.waitElementPresent(40, "xpath", "//input[@name='aadharCardImage']");
+			Common.findElement("xpath", "//input[@name='aadharCardImage']").sendKeys(path1);
+			Common.textBoxInput("xpath", "//input[@name='mobileNo']", "9898989898");
+			Common.textBoxInput("xpath", "//input[@name='emailId']",Utils.getEmailid());
+			Common.textBoxInput("xpath", "//input[@name='businessContactNo']", "9898989898");
+			Common.textBoxInput("xpath", "//input[@name='businessEmailId']", Utils.getEmailid());
+			Common.textBoxInput("xpath", "//input[@name='designation']", "Testers");
+			Sync.waitElementPresent("xpath", "//button[text()='Sign up for free']");
+			Common.clickElement("xpath", "//button[text()='Sign up for free']");
+			
+		
+		}
+		catch(Exception | Error e)
+		{
+			e.printStackTrace();
+			
+			Assert.fail();
+		}
+		
+	}
+
+	public void validating_singup_form() {
+		// TODO Auto-generated method stub
+		try
+		{
+			Sync.waitElementPresent("xpath", "//button[text()='Sign up for free']");
+			Common.clickElement("xpath", "//button[text()='Sign up for free']");
+			int errorsize = Common.findElements("xpath", "//small[contains(@class,'Signup_validationEr')]").size();
+			if (errorsize >= 0) {
+				ExtenantReportUtils.addPassLog("validating the error messages in signup page", "Error message should be appear when we click on the signup button",
+						"sucessfully  dispaly error message in the signup page", Common.getscreenShotPathforReport("errormessage is displayed in the signup page"));
+			} else {
+
+				ExtenantReportUtils.addFailedLog("validating the error messages in signup page", "Error message should be appear when we click on the signup button",
+						"Unable to dispaly error message in the signup page", Common.getscreenShotPathforReport("failed to dispaly error message in the signup page"));
+
+				Assert.fail();
+			}
+		}
+		catch(Exception | Error e)
+		{
+			e.printStackTrace();
+			ExtenantReportUtils.addFailedLog("validating the error messages in signup page", "Error message should be appear when we click on the signup button",
+					"Unable to dispaly error message in the signup page", Common.getscreenShotPathforReport("failed to dispaly error message in the signup page"));
+			Assert.fail();
+		}
+		
+	}
 	
-	//
 }
