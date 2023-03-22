@@ -1,0 +1,9 @@
+2023-03-22 00:22:17 INFO  log4j:53 - HTMLPreparation-parseHTMLfile-LineNo:35-File Parsed
+2023-03-22 00:22:17 INFO  log4j:53 - ReadTestNGData-getAttributes-LineNo:50-Returning hashmap result for expected tagname as test and attributeName as testid
+2023-03-22 00:22:17 INFO  log4j:53 - ReadTestNGData-getAllTestCaseIDs-LineNo:62-Returning all test case IDs
+2023-03-22 00:22:17 INFO  log4j:53 - ReadTestNGData-getAttributes-LineNo:50-Returning hashmap result for expected tagname as test and attributeName as description
+2023-03-22 00:22:17 INFO  log4j:53 - ReadTestNGData-getAllTestDescriptions-LineNo:68-Returning all test case Descriptions
+2023-03-22 00:22:17 INFO  log4j:53 - ReadTestNGData-getAttributes-LineNo:50-Returning hashmap result for expected tagname as class and attributeName as name
+2023-03-22 00:22:17 INFO  log4j:53 - ReadTestNGData-getAllModules-LineNo:78-Returning all test case modules
+2023-03-22 00:22:17 INFO  log4j:53 - ReadTestNGData-getAttributes-LineNo:50-Returning hashmap result for expected tagname as test and attributeName as priority
+2023-03-22 00:22:17 INFO  log4j:53 - ReadTestNGData-getAllPriorities-LineNo:84-Returning all test case priorities

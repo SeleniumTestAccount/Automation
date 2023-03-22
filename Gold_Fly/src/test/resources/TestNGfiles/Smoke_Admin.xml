@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<suite name="FlyPegion execution">
+    <listeners>
+        <listener class-name="Utilities.TestListener"/>
+    </listeners>
+    
+      <test name="Test_FP_001_Login_And_Logout" testid="FP-001" priority="P1" description="This script will cover validating Login and Logout Functionality">
+		<classes>
+			<class name="TestExecute.Flypegion.FP_001_Login_And_Logout" />
+		</classes>
+	</test> 
+	 <test name="Test_FP_002_Account_Registration_Status" testid="FP-002" priority="P1" description="This script will cover validating Account Registration Status Functionality">
+		<classes>
+			<class name="TestExecute.Flypegion.FP_002_Account_Registration_Status" />
+		</classes>
+	</test>
+	 <test name="Test_FP_003_Forgot_Password" testid="FP-003" priority="P1" description="This script will cover validating Forgot Password Functionality">
+		<classes>
+			<class name="TestExecute.Flypegion.FP_003_Forgot_Password" />
+		</classes>
+	</test> 
+	
+	
+        </suite>  
+        

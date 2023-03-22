@@ -1,0 +1,48 @@
+2023-03-22 00:20:03 INFO  log4j:67 - TestListener-deleteFilesInDirectory-LineNo:45-Unable to delete files in directory. Continuing.. 
+ Error: 
+2023-03-22 00:20:09 INFO  log4j:53 - BaseDriver-StartBrowser-LineNo:197-Chrome Driver Stared Successfully
+2023-03-22 00:20:15 INFO  log4j:53 - Login-signIn-LineNo:72-Logged in with User: 
+2023-03-22 00:20:15 INFO  log4j:53 - Sync-waitPageLoad-LineNo:57-Sync waitPageLoad Completed successfully
+2023-03-22 00:20:21 INFO  log4j:53 - Common-getscreenShotPathforReport-LineNo:717-screenshot saved successfully
+2023-03-22 00:20:21 INFO  log4j:53 - Sync-waitElementPresent-LineNo:393- Time taken to waitElementPresent  with locator //button[text()='Login as Agent']    with attrubuteBy  xpath    is  81  milliseconds
+2023-03-22 00:20:21 INFO  log4j:53 - Sync-waitElementPresent-LineNo:396-Sync waitElementPresent completed successfully
+2023-03-22 00:20:21 INFO  log4j:53 - Sync-waitPageLoad-LineNo:57-Sync waitPageLoad Completed successfully
+2023-03-22 00:20:29 INFO  log4j:53 - Common-getscreenShotPathforReport-LineNo:717-screenshot saved successfully
+2023-03-22 00:20:29 INFO  log4j:53 - Sync-waitPageLoad-LineNo:57-Sync waitPageLoad Completed successfully
+2023-03-22 00:20:39 INFO  log4j:53 - Common-getscreenShotPathforReport-LineNo:717-screenshot saved successfully
+2023-03-22 00:20:39 INFO  log4j:53 - Sync-waitPageLoad-LineNo:57-Sync waitPageLoad Completed successfully
+2023-03-22 00:20:39 INFO  log4j:53 - Sync-waitElementPresent-LineNo:393- Time taken to waitElementPresent  with locator //button[text()='Logout']    with attrubuteBy  xpath    is  25  milliseconds
+2023-03-22 00:20:39 INFO  log4j:53 - Sync-waitElementPresent-LineNo:396-Sync waitElementPresent completed successfully
+2023-03-22 00:20:44 INFO  log4j:53 - Common-getscreenShotPathforReport-LineNo:717-screenshot saved successfully
+2023-03-22 00:20:44 INFO  log4j:53 - Common-getscreenShotPathforReport-LineNo:717-screenshot saved successfully
+2023-03-22 00:20:52 INFO  log4j:53 - BaseDriver-StartBrowser-LineNo:197-Chrome Driver Stared Successfully
+2023-03-22 00:20:58 INFO  log4j:53 - Login-signIn-LineNo:72-Logged in with User: 
+2023-03-22 00:20:58 INFO  log4j:53 - Sync-waitPageLoad-LineNo:57-Sync waitPageLoad Completed successfully
+2023-03-22 00:21:03 INFO  log4j:53 - Common-getscreenShotPathforReport-LineNo:717-screenshot saved successfully
+2023-03-22 00:21:04 INFO  log4j:53 - Sync-waitElementPresent-LineNo:393- Time taken to waitElementPresent  with locator //button[text()='Login as Agent']    with attrubuteBy  xpath    is  47  milliseconds
+2023-03-22 00:21:04 INFO  log4j:53 - Sync-waitElementPresent-LineNo:396-Sync waitElementPresent completed successfully
+2023-03-22 00:21:04 INFO  log4j:53 - Sync-waitPageLoad-LineNo:57-Sync waitPageLoad Completed successfully
+2023-03-22 00:21:11 INFO  log4j:53 - Common-getscreenShotPathforReport-LineNo:717-screenshot saved successfully
+2023-03-22 00:21:11 INFO  log4j:53 - Sync-waitElementPresent-LineNo:393- Time taken to waitElementPresent  with locator //a[text()='Check registration status']    with attrubuteBy  xpath    is  32  milliseconds
+2023-03-22 00:21:11 INFO  log4j:53 - Sync-waitElementPresent-LineNo:396-Sync waitElementPresent completed successfully
+2023-03-22 00:21:12 INFO  log4j:53 - Sync-waitPageLoad-LineNo:57-Sync waitPageLoad Completed successfully
+2023-03-22 00:21:19 INFO  log4j:53 - Common-getscreenShotPathforReport-LineNo:717-screenshot saved successfully
+2023-03-22 00:21:19 INFO  log4j:53 - Sync-waitElementPresent-LineNo:393- Time taken to waitElementPresent  with locator //input[@id='referenceID']    with attrubuteBy  xpath    is  32  milliseconds
+2023-03-22 00:21:19 INFO  log4j:53 - Sync-waitElementPresent-LineNo:396-Sync waitElementPresent completed successfully
+2023-03-22 00:21:20 INFO  log4j:53 - Sync-waitPageLoad-LineNo:57-Sync waitPageLoad Completed successfully
+2023-03-22 00:21:27 INFO  log4j:53 - Common-getscreenShotPathforReport-LineNo:717-screenshot saved successfully
+2023-03-22 00:21:27 INFO  log4j:53 - Common-getscreenShotPathforReport-LineNo:717-screenshot saved successfully
+2023-03-22 00:21:31 INFO  log4j:53 - BaseDriver-StartBrowser-LineNo:197-Chrome Driver Stared Successfully
+2023-03-22 00:21:36 INFO  log4j:53 - Login-signIn-LineNo:72-Logged in with User: 
+2023-03-22 00:21:37 INFO  log4j:53 - Sync-waitPageLoad-LineNo:57-Sync waitPageLoad Completed successfully
+2023-03-22 00:21:42 INFO  log4j:53 - Common-getscreenShotPathforReport-LineNo:717-screenshot saved successfully
+2023-03-22 00:21:42 INFO  log4j:53 - Sync-waitElementPresent-LineNo:393- Time taken to waitElementPresent  with locator //button[text()='Login as Agent']    with attrubuteBy  xpath    is  42  milliseconds
+2023-03-22 00:21:42 INFO  log4j:53 - Sync-waitElementPresent-LineNo:396-Sync waitElementPresent completed successfully
+2023-03-22 00:21:42 INFO  log4j:53 - Sync-waitPageLoad-LineNo:57-Sync waitPageLoad Completed successfully
+2023-03-22 00:21:50 INFO  log4j:53 - Common-getscreenShotPathforReport-LineNo:717-screenshot saved successfully
+2023-03-22 00:21:50 INFO  log4j:53 - Sync-waitPageLoad-LineNo:57-Sync waitPageLoad Completed successfully
+2023-03-22 00:22:00 INFO  log4j:53 - Common-getscreenShotPathforReport-LineNo:717-screenshot saved successfully
+2023-03-22 00:22:00 INFO  log4j:53 - Sync-waitPageLoad-LineNo:57-Sync waitPageLoad Completed successfully
+2023-03-22 00:22:06 INFO  log4j:53 - Sync-waitPageLoad-LineNo:57-Sync waitPageLoad Completed successfully
+2023-03-22 00:22:10 INFO  log4j:53 - Common-getscreenShotPathforReport-LineNo:717-screenshot saved successfully
+2023-03-22 00:22:11 INFO  log4j:53 - Common-getscreenShotPathforReport-LineNo:717-screenshot saved successfully
