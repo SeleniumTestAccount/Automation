@@ -245,20 +245,21 @@ public class FlyPegionHelper {
 					"User Successfully entered ID and Checked Registration Status ",
 					"User Failed to entered ID on Registration Status and not checked Registration Status");
 			
-//			Thread.sleep(3000);
-//			Common.textBoxInputClear("xpath", "//input[@id='referenceID']");
-//			
-//			WebElement Select_Customergroups = Common.findElement("xpath", "//input[@id='referenceID']");
-//			Select_Customergroups.sendKeys(Keys.CONTROL + "a");
+			Thread.sleep(3000);
+			Common.textBoxInputClear("xpath", "//input[@id='referenceID']");
+			
+			WebElement Select_all = Common.findElement("xpath", "//input[@id='referenceID']");
+			Select_all.sendKeys(Keys.CONTROL + "a");
+			Common.findElement("xpath", "//input[@id='referenceID']").sendKeys("FPGNCI000041A");
 //			Common.textBoxInput("xpath", "//input[@id='referenceID']", "FPGNCI000041A");
-//			Common.clickElement("xpath", "//button[text()='Get Status']");
-//			
-//			Common.assertionCheckwithReport(
-//					status.contains("APPROVED")|| status.contains("APPLIED") &&(Common.getCurrentURL().contains("/verify-registration-status")),
-//					"To validate the user Checks the Registration Status ",
-//					"User should able to Check Registration Status after entering ID",
-//					"User Successfully entered ID and Checked Registration Status ",
-//					"User Failed to entered ID on Registration Status and not checked Registration Status");
+			Common.clickElement("xpath", "//button[text()='Get Status']");
+			
+			Common.assertionCheckwithReport(
+					status.contains("APPROVED")|| status.contains("APPLIED") &&(Common.getCurrentURL().contains("/verify-registration-status")),
+					"To validate the user Checks the Registration Status ",
+					"User should able to Check Registration Status after entering ID",
+					"User Successfully entered ID and Checked Registration Status ",
+					"User Failed to entered ID on Registration Status and not checked Registration Status");
 			
 		}
 		catch(Exception |Error e) {
@@ -268,6 +269,44 @@ public class FlyPegionHelper {
 					"Unable to click on the login button and not Navigated to the login page",
 					Common.getscreenShotPathforReport(
 							"Failed to click login button and not Navigated to the login page"));
+			Assert.fail();
+		}
+	}
+	
+	public void Invalid_login_Details() {
+		try {
+			
+			Common.clickElement("xpath", "//button[text()='Login']");
+			
+			Common.assertionCheckwithReport(
+					Common.getPageTitle().contains("FlyPigeon")&& (Common.getCurrentURL()).contains("login") ,
+					"To validate the required login Credentials fields ",
+					"After clicking on login button it should display alert as Please Fill the fields",
+					"It displays the alert Please Fill the fields after clicking on the login button",
+					"Failed to display alert as Please Fill the fields ");
+			
+			Common.textBoxInput("xpath", "//input[@placeholder='Enter your username']", "FPGNLT000033");
+			Common.textBoxInput("xpath", "//input[@placeholder='Enter your password']", "Ilusandy@");
+			Common.clickElement("xpath", "//button[text()='Login']");
+			Sync.waitPageLoad(3000);
+			Thread.sleep(1000);
+			String alert = Common.findElement("xpath", "//div[@class='Toastify']/div").getAttribute("class");
+			System.out.println(alert);
+			Common.assertionCheckwithReport(
+					Common.getPageTitle().contains("FlyPigeon") && alert.contains("Toastify") ,
+					"To validate the Invalid login Credentials",
+					"After clicking on the login button it should display  alert as Invalid login credentials",
+					"It displays the alert Invalid login credentials after clicking on the login button",
+					"Failed to login and display alert as Invalid login credentials ");
+
+		}
+		catch(Exception |Error e) {
+			e.printStackTrace();
+			ExtenantReportUtils.addFailedLog("To validate the Invalid login Credentials",
+					"After clicking on the login button it should display  alert as Invalid login credentials",
+					"Unable to displays the alert Invalid login credentials after clicking on the login button",
+					Common.getscreenShotPathforReport("Failed to login and display alert as Invalid login credentials "));
+
 			Assert.fail();
 		}
 	}
