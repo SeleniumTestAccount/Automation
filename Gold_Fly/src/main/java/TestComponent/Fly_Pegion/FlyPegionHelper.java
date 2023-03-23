@@ -361,7 +361,12 @@ public class FlyPegionHelper {
 			Common.textBoxInput("xpath", "//input[@name='lastName']", "Auto");
 			Common.clickElement("xpath", "//input[@type='date']");
 			Common.textBoxInput("xpath", "//input[@type='date']","03-01-2000");
-			Common.textBoxInput("xpath", "//input[@name='agencyName']", "PEGION");
+			int user=Common.genrateRandomNumber();
+			System.out.println(user);
+			String userID=Integer.toString(user);
+			String agency="PEGION"+"10"+userID;
+			System.out.println(agency);
+			Common.textBoxInput("xpath", "//input[@name='agencyName']", agency);
 			Common.textBoxInput("xpath", "//input[@name='address']", " Delhi ");
 			Common.dropdown("xpath", "//select[@name='state']", Common.SelectBy.TEXT, "Delhi");
 			Common.textBoxInput("xpath", "//input[@name='city']", "New Delhi");
@@ -381,19 +386,39 @@ public class FlyPegionHelper {
 			String path1 = System.getProperty("user.dir") + ("\\src\\test\\resources\\TestData\\FlyPegion\\Screenshot.png");
 			Sync.waitElementPresent(40, "xpath", "//input[@name='aadharCardImage']");
 			Common.findElement("xpath", "//input[@name='aadharCardImage']").sendKeys(path1);
-			Common.textBoxInput("xpath", "//input[@name='mobileNo']", "9898989898");
+			int number=Common.genrateRandomNumber();
+			System.out.println(number);
+			String mobile=Integer.toString(number);
+			String phone= "900000"+mobile;
+			Common.textBoxInput("xpath", "//input[@name='mobileNo']", phone);
 			Common.textBoxInput("xpath", "//input[@name='emailId']",Utils.getEmailid());
-			Common.textBoxInput("xpath", "//input[@name='businessContactNo']", "9898989898");
-			Common.textBoxInput("xpath", "//input[@name='businessEmailId']", Utils.getEmailid());
+			Common.textBoxInput("xpath", "//input[@name='businessContactNo']", phone);
+			
+			String email = Common.findElement("xpath", "//input[@name='emailId']").getAttribute("value");
+			Thread.sleep(2000);
+			Common.textBoxInput("xpath", "//input[@name='businessEmailId']", email);
 			Common.textBoxInput("xpath", "//input[@name='designation']", "Testers");
 			Sync.waitElementPresent("xpath", "//button[text()='Sign up for free']");
 			Common.clickElement("xpath", "//button[text()='Sign up for free']");
+			Sync.waitPageLoad(5000);
+			Thread.sleep(5000);
+			int size = Common.findElements("xpath", "//div[@class='nav-logo']").size();
 			
+			Common.assertionCheckwithReport(
+					size > 0 &&Common.getPageTitle().contains("FlyPigeon"),
+					"To validate the Successfull Sign Up",
+					"After Clicking the Sign Up For free it should navigate to Success page ",
+					"Sucessfully navigates to Registration Success page after Clicking the Sign Up For free",
+					"Failed to Click the Sign Up For free in the Sign up page");
 		
 		}
 		catch(Exception | Error e)
 		{
 			e.printStackTrace();
+			ExtenantReportUtils.addFailedLog("To validate the Successfull signup page",
+					"After clicking the Sign Up For free it should navigate to Success page ",
+					"Unable to navigates to Registration Success page after Clicking the Sign Up For free",
+					Common.getscreenShotPathforReport("Failed to Click the Sign Up For free in the Sign up page"));
 			
 			Assert.fail();
 		}

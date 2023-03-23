@@ -4,7 +4,7 @@
         <listener class-name="Utilities.TestListener"/>
     </listeners>
     
-      <test name="Test_FP_001_Login_And_Logout" testid="FP-001" priority="P1" description="This script will cover validating Login and Logout Functionality">
+       <test name="Test_FP_001_Login_And_Logout" testid="FP-001" priority="P1" description="This script will cover validating Login and Logout Functionality">
 		<classes>
 			<class name="TestExecute.Flypegion.FP_001_Login_And_Logout" />
 		</classes>
@@ -17,6 +17,22 @@
 	 <test name="Test_FP_003_Forgot_Password" testid="FP-003" priority="P1" description="This script will cover validating Forgot Password Functionality">
 		<classes>
 			<class name="TestExecute.Flypegion.FP_003_Forgot_Password" />
+		</classes>
+	</test> 
+	
+	<test name="Test_FP_004_Invalid_Login_Details" testid="FP-004" priority="P1" description="This script will cover validating Invalid Login Details">
+		<classes>
+			<class name="TestExecute.Flypegion.FP_004_Invalid_Login_Details" />
+		</classes>
+	</test> 
+	<test name="Test_FP_005_Account_Sign_Up_form_Validation" testid="FP-005" priority="P1" description="This script will cover validating Account Sign Up form Validations">
+		<classes>
+			<class name="TestExecute.Flypegion.FP_005_Account_Sign_Up_form_Validation" />
+		</classes>
+	</test>  
+	<test name="Test_FP_006_Account_Sign_Up" testid="FP-006" priority="P1" description="This script will cover validating Account Sign Up Functionality">
+		<classes>
+			<class name="TestExecute.Flypegion.FP_006_Account_Sign_Up" />
 		</classes>
 	</test> 
 	
