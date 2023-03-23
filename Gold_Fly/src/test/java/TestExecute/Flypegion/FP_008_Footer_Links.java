@@ -8,19 +8,16 @@ import TestComponent.Fly_Pegion.FlyPegionHelper;
 import TestLib.Common;
 import TestLib.Login;
 
-public class FP_004_Invalid_Login_Details {
+public class FP_008_Footer_Links {
 
 	String datafile = "FlyPegion//FlyPegionTestData.xlsx";
-	FlyPegionHelper FlyPegion = new FlyPegionHelper(datafile, "DataSet");
+	FlyPegionHelper FlyPegion = new FlyPegionHelper(datafile, "FooterLinks");
 
 	@Test(retryAnalyzer = Utilities.RetryAnalyzer.class)
-	public void Verify_Invalid_Login_Details_Functionality() {
+	public void Verify_Footer_Links_Functionality() {
 		try {
 			FlyPegion.verifyHomePage();
-			FlyPegion.click_Login();
-			FlyPegion.Invalid_login_Details();
-			FlyPegion.in_Active_login_Details();
-			
+			FlyPegion.footerLinks("Footer");
 
 		} catch (Exception e) {
 
@@ -29,7 +26,7 @@ public class FP_004_Invalid_Login_Details {
 
 	@AfterTest
 	public void clearBrowser() {
-//		Common.closeAll();
+		Common.closeAll();
 
 	}
 

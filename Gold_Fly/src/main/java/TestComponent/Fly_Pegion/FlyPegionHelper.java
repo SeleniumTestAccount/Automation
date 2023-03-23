@@ -550,5 +550,34 @@ public class FlyPegionHelper {
 			
 		  }
 
+		public void in_Active_login_Details() {
+			try {
+				
+				Common.textBoxInput("xpath", "//input[@placeholder='Enter your username']", "FPGNCI000041A");
+				Common.textBoxInput("xpath", "//input[@placeholder='Enter your password']", "Testauto@23");
+				Common.clickElement("xpath", "//button[text()='Login']");
+				Sync.waitPageLoad(3000);
+				Thread.sleep(1000);
+				String alert = Common.findElement("xpath", "//div[@class='Toastify']/div").getAttribute("class");
+				System.out.println(alert);
+				Common.assertionCheckwithReport(
+						Common.getPageTitle().contains("FlyPigeon") && alert.contains("Toastify") ,
+						"To validate the InActive login Credentials",
+						"After clicking on the login button it should display  alert as InActive login credentials",
+						"It displays the alert InActive login credentials after clicking on the login button",
+						"Failed to login and display alert as InActive login credentials ");
+
+			}
+			catch(Exception |Error e) {
+				e.printStackTrace();
+				ExtenantReportUtils.addFailedLog("To validate the InActive login Credentials",
+						"After clicking on the login button it should display  alert as InActive login credentials",
+						"Unable to displays the alert InActive login credentials after clicking on the login button",
+						Common.getscreenShotPathforReport("Failed to login and display alert as InActive login credentials "));
+
+				Assert.fail();
+			}
+		}
+
 	
 }

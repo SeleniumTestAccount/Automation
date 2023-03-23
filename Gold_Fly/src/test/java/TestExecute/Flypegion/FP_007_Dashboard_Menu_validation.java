@@ -10,7 +10,7 @@ import TestLib.Login;
 public class FP_007_Dashboard_Menu_validation {
 
 	String datafile = "FlyPegion//FlyPegionTestData.xlsx";
-	FlyPegionHelper FlyPegion = new FlyPegionHelper(datafile, "Dashboard");
+	FlyPegionHelper FlyPegion = new FlyPegionHelper(datafile, "DataSet");
 
 	@Test(retryAnalyzer = Utilities.RetryAnalyzer.class)
 	public void Verify_Dashboard_Menu_Functionality() {
