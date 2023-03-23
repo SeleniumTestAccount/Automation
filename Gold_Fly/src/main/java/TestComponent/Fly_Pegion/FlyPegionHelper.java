@@ -450,7 +450,67 @@ public class FlyPegionHelper {
 					"Unable to dispaly error message in the signup page", Common.getscreenShotPathforReport("failed to dispaly error message in the signup page"));
 			Assert.fail();
 		}
-		
+	}
+		public void Dashboard_validation(String Dataset) {
+			// TODO Auto-generated method stub
+			
+				String Accountlinks = data.get(Dataset).get("Account Links");
+				String Links=data.get(Dataset).get("Links");
+				String[] Account = Accountlinks.split(",");
+				String[] Accounts = Links.split(",");
+				int i = 0;
+				try {
+					for (i = 0; i < Account.length; i++) {
+						Sync.waitElementPresent("xpath",
+								"//div[contains(@class,'MuiListItemText-root')]//span[text()='" + Account[i] + "']");
+						Common.clickElement("xpath",
+								"//div[contains(@class,'MuiListItemText-root')]//span[text()='" + Account[i] + "']");
+						Sync.waitPageLoad();
+						Thread.sleep(4000);
+						String title = Common.findElement("xpath", "//h1").getText();
+						System.out.println(title);
+						Common.assertionCheckwithReport(title.contains(Account[i]) || title.contains("Markups"),
+								"verifying Account page links " + Account[i],
+								"user should navigate to the " + Account[i] + " page",
+								"user successfully Navigated to the " + Account[i], "Failed click on the " + Account[i]);
+
+			}
+					for (i = 0; i < Accounts.length; i++) {
+						Sync.waitElementPresent("xpath",
+								"//div[contains(@class,'MuiListItemText-root')]//span[text()='" + Accounts[i] + "']");
+						Common.clickElement("xpath",
+								"//div[contains(@class,'MuiListItemText-root')]//span[text()='" + Accounts[i] + "']");
+						Sync.waitPageLoad();
+						Thread.sleep(4000);
+						String title = Common.findElement("xpath", "//h2").getText();
+						System.out.println(title);
+						Common.assertionCheckwithReport(title.contains(Accounts[i]) || title.contains("Book Bus Tickets"),
+								"verifying Account page links " + Accounts[i],
+								"user should navigate to the " + Accounts[i] + " page",
+								"user successfully Navigated to the " + Accounts[i], "Failed click on the " + Accounts[i]);
+					
+			}
+					Sync.waitElementPresent("xpath",
+							"//div[contains(@class,'MuiListItemText-root')]//span[text()='Flights']");
+					Common.clickElement("xpath",
+							"//div[contains(@class,'MuiListItemText-root')]//span[text()='Flights']");
+					Sync.waitPageLoad();
+					Thread.sleep(4000);
+					String flights=Common.findElement("xpath", "//button[@class='TripTypes_tripType__rCV7O ']").getText();
+					Common.assertionCheckwithReport(flights.contains("Round Trip"),
+							"verifying the fligths navigation in the account page",
+							"user should navigate to the fligths page after click on the flights button",
+							"user successfully Navigated to the flights page", "Failed click on the flights page");
+				}
+			catch(Exception | Error e)
+			{
+				e.printStackTrace();
+				ExtenantReportUtils.addFailedLog("validating the account page links " + Account[i],
+						"user should Navigate to the " + Account[i] + " page",
+						"User unable to navigate to the " + Account[i],
+						Common.getscreenShotPathforReport("user Failed to Navigate to the respective page"));
+				Assert.fail();
+			}
 	}
 	
 }
