@@ -512,5 +512,43 @@ public class FlyPegionHelper {
 				Assert.fail();
 			}
 	}
+		
+		public void footerLinks(String Dataset){
+			 String Footerlinks=data.get(Dataset).get("Footer Links");
+				String[] Footer=Footerlinks.split(",");
+				int i=0;
+			  try{
+				  Sync.waitPageLoad();
+			  
+			  for(i=0;i<Footer.length;i++) {
+				  Common.actionsKeyPress(Keys.END);
+				  Sync.waitPageLoad();
+				  Common.scrollIntoView("xpath", "//a[contains(@class,'Footer') and contains(text(),'"+Footer[i]+"')]");
+			  Common.clickElement("xpath","//a[contains(@class,'Footer') and contains(text(),'"+Footer[i]+"')]");
+			  Sync.waitPageLoad();
+			 Thread.sleep(2000);
+			 Common.switchWindows();
+			 String title = Common.findElement("xpath", "//h1").getText();
+			 String title1 = Common.findElement("xpath", "//h1").getTagName();
+				System.out.println(title);
+				System.out.println(title1);
+			  System.out.println(Footer[i]);
+			  System.out.println( Common.getCurrentURL());
+			  System.out.println(Common.getPageTitle());
+			  Common.assertionCheckwithReport(title1.contains("h1") ||Common.getPageTitle().contains("FlyPigeon"),"Validate the Footer link "+Footer[i], "Click the footer link "+Footer[i]+"it will navigate to page"+Footer[i], "successfully navigating to "+Footer[i] +"page ","Failed to navigate to"+Footer[i]+"page");
+			  }
+			  Common.closeCurrentWindow();
+			Common.switchToFirstTab();
+			  }
+			  
+			  catch (Exception |Error e) {
+					e.printStackTrace();
+			    ExtenantReportUtils.addFailedLog("Validate the Footer link "+Footer[i],"Click the footer link "+Footer[i]+"it will navigate to page"+Footer[i], "Failed to navigate to"+Footer[i]+"page", Common.getscreenShotPathforReport("failed to land on "+Footer[i]));
+			    Assert.fail();
+			  
+		  }
+			
+		  }
+
 	
 }

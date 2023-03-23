@@ -35,6 +35,16 @@
 			<class name="TestExecute.Flypegion.FP_006_Account_Sign_Up" />
 		</classes>
 	</test> 
+	<test name="Test_FP_007_Dashboard_Menu_validation" testid="FP-007" priority="P1" description="This script will cover validating Dashboard Menu Functionality">
+		<classes>
+			<class name="TestExecute.Flypegion.FP_007_Dashboard_Menu_validation" />
+		</classes>
+	</test> 
+	<test name="Test_FP_008_Footer_Links" testid="FP-008" priority="P1" description="This script will cover validating Footer links Functionality">
+		<classes>
+			<class name="TestExecute.Flypegion.FP_008_Footer_Links" />
+		</classes>
+	</test> 
 	
 	
         </suite>  
