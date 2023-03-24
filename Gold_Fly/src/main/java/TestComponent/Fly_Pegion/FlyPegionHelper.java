@@ -715,6 +715,52 @@ public class FlyPegionHelper {
 			}
 			
 		}
+
+		public void update_Balance(String Dataset) {
+			// TODO Auto-generated method stub
+			try
+			{
+				Sync.waitElementPresent("xpath","//div[contains(@class,'MuiListItemText-root')]//span[text()='Add Balance']");
+				Common.clickElement("xpath","//div[contains(@class,'MuiListItemText-root')]//span[text()='Add Balance']");
+				Thread.sleep(2000);
+				String title = Common.findElement("xpath", "//h2").getText(); 
+				Common.assertionCheckwithReport(title.contains("Add Balance to wallet"),
+						"verifying the add balance page navigation",
+						"user should able to navigate to the add balance page ",
+						"user successfully Navigated to the add balance page ",
+						" Failed click on the navigate to the add balance page");
+				Common.clickElement("xpath", "//input[@type='number']");
+				Common.textBoxInput("xpath", "//input[@type='number']", data.get(Dataset).get("Update Balance"));
+				Common.clickElement("xpath", "//button[text()='Top Up Wallet']");
+				Thread.sleep(3000);
+				String payment=Common.findElement("xpath", "//p[contains(@title,'FlyPigeon Digital')]").getText();
+				Common.assertionCheckwithReport(payment.contains("FlyPigeon Digital"),
+						"verifying the FlyPigeon Digital popup",
+						"user should able to see the FlyPigeon Digital popup when we click on the update balance ",
+						"Sucessfully user able to see the FlyPigeon Digital popup ",
+						" Failed to see the FlyPigeon Digital popup");
+				Common.clickElement("xpath", "//input[@name='contact']");
+				Common.textBoxInput("xpath", "//input[@name='contact']", data.get(Dataset).get("phone"));
+				Common.clickElement("xpath", "//button[@class='svelte-13mgn3i']");
+				Thread.sleep(3000);
+				String paymentpage=Common.findElement("xpath", "//h3[@class='title svelte-bm563m']").getText();
+				Common.assertionCheckwithReport(paymentpage.contains("Pay With UPI QR"),
+						"verifying the payment page",
+						"user should able to navigate to the payment page after clicking on the proceed button ",
+						"Sucessfully user navigated to the payment page ",
+						" Failed to navigate to the payment page");
+			}
+			catch(Exception | Error e)
+			{
+				e.printStackTrace();
+				ExtenantReportUtils.addFailedLog("verifying the payment page",
+						"user should able to navigate to the payment page after clicking on the proceed button ",
+						"Unable to navigate to the payment page ",
+						Common.getscreenShotPathforReport("Failed to navigate to the payment page"));
+				Assert.fail();
+			}
+			
+		}
 		
 		
 

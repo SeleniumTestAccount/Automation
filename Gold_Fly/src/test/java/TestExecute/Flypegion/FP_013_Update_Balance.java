@@ -7,20 +7,18 @@ import TestComponent.Fly_Pegion.FlyPegionHelper;
 import TestLib.Common;
 import TestLib.Login;
 
-public class FP_011_Change_Password {
+public class FP_013_Update_Balance {
 
 	String datafile = "FlyPegion//FlyPegionTestData.xlsx";
 	FlyPegionHelper FlyPegion = new FlyPegionHelper(datafile, "DataSet");
 
 	@Test(retryAnalyzer = Utilities.RetryAnalyzer.class)
-	public void Verify_Change_Password_Functionality() {
+	public void Verify_Update_Balance_Functionality() {
 		try {
 			FlyPegion.verifyHomePage();
 			FlyPegion.click_Login();
 			FlyPegion.login_Details();
-		    FlyPegion.change_Password();
-		    FlyPegion.click_Login();
-		    FlyPegion.login_Details();
+			FlyPegion.update_Balance("Balance");
 
 		} catch (Exception e) {
 
@@ -29,7 +27,7 @@ public class FP_011_Change_Password {
 
 	@AfterTest
 	public void clearBrowser() {
-//		Common.closeAll();
+		Common.closeAll();
 
 	}
 
