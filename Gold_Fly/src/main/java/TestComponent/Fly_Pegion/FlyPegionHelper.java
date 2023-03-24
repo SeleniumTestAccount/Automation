@@ -762,6 +762,118 @@ public class FlyPegionHelper {
 			
 		}
 		
+		public void click_Support() {
+			try {
+				
+				Common.clickElement("xpath", "//span[text()='Support']");
+				Sync.waitPageLoad(3000);
+				Thread.sleep(2000);
+				Common.clickElement("xpath", "//button[text()='Clear All']");
+				String support = Common.findElement("xpath", "//h1[text()='Support']").getText();
+				String support1 = Common.findElement("xpath", "//div[contains(@class,'Support_datesSearchDiv')]").getAttribute("class");
+				System.out.println(support);
+				System.out.println(support1);
+				Common.assertionCheckwithReport(
+						Common.getPageTitle().contains("FlyPigeon") && support.contains("Support")&& support1.contains("Support"),
+						"To validate the user lands on Support page ",
+						"After clicking on the Support button it should navigate to the Support page",
+						"user Sucessfully navigate to the Support page after clicking on the Support button",
+						"Failed to click Support and not navigated to the Support page ");
+
+			}
+			catch(Exception |Error e) {
+				e.printStackTrace();
+				ExtenantReportUtils.addFailedLog("To validate the user Navigate to Support page ",
+						"After clicking on the Support button it should navigate to the Support page",
+						"Unable to navigate the user to the Support page after clicking on the Support button",
+						Common.getscreenShotPathforReport("Failed to click Support and not navigated to the click page "));
+
+				Assert.fail();
+			}
+		}
+
+		public void support_form() {
+			try {
+				
+				Common.textBoxInput("xpath", "(//input[@placeholder='yyyy/mm/dd'])[1]", "2023/03/05");
+				Common.textBoxInput("xpath", "(//input[@placeholder='yyyy/mm/dd'])[2]", "2023/03/24");
+				
+				Common.textBoxInput("xpath", "//input[@id='txnId']", "FPGNCALL000090");
+				Common.textBoxInput("xpath", "//input[@id='conatactNo']", "8186886443");
+				Common.textBoxInput("xpath", "//input[@id='emailId']", "premanath@tekkrexim.in");
+				Common.clickElement("xpath", "//button[text()='Search']");
+				Sync.waitPageLoad(3000);
+				Thread.sleep(2000);
+				String ID= Common.findElement("xpath", "//input[@id='txnId']").getAttribute("value");
+				String support = Common.findElement("xpath", "//h1[text()='Support']").getText();
+				String support1 = Common.findElement("xpath", "//div[contains(@class,'Support_datesSearchDiv')]").getAttribute("class");
+				String IDvalue = Common.findElement("xpath", "//th[contains(text(),'"+ID+"')]").getText();
+				System.out.println(support);
+				System.out.println(support1);
+				System.out.println(ID);
+				System.out.println(IDvalue);
+				Common.assertionCheckwithReport(
+						Common.getPageTitle().contains("FlyPigeon") && support.contains("Support")&& support1.contains("Support"),
+						"To validate the user search on Support page ",
+						"After clicking on the search button it should display the search Support results",
+						"user Sucessfully display the search Support results after clicking on the Search button",
+						"Failed to click search and not displayed the search results ");
+
+			}
+			catch(Exception |Error e) {
+				e.printStackTrace();
+				ExtenantReportUtils.addFailedLog("To validate the user Navigate to Support page ",
+						"After clicking on the search button it should display the search Support results",
+						"Unable to display the search Support results after clicking on the Search button",
+						Common.getscreenShotPathforReport("Failed to click search and not displayed the search results "));
+
+				Assert.fail();
+			}
+		}
+
+		public void support_bot() {
+			try {
+				Common.clickElement("xpath", "//button[contains(@class,'Support_supportBtn_')]");
+				WebElement Select_all = Common.findElement("xpath", "//input[@id='phone']");
+				Select_all.sendKeys(Keys.CONTROL + "a");
+				Common.findElement("xpath", "//input[@id='phone']").sendKeys("8186886443");
+				WebElement Selectall = Common.findElement("xpath", "//input[@id='email']");
+				Selectall.sendKeys(Keys.CONTROL + "a");
+				
+				Common.findElement("xpath", "//input[@id='email']").sendKeys("premanath@tekkrexim.in");
+
+//				Common.textBoxInput("xpath", "//input[@id='phone']", "8186886443");
+//				Common.textBoxInput("xpath", "//input[@id='email']", "premanath@tekkrexim.in");
+				
+				Common.clickElement("xpath", "//button[text()='Submit']");
+			
+//			Common.textBoxInput("xpath", "//textarea[@id='query']", "Test");
+				//button[@aria-label='closeBtn']
+				Sync.waitPageLoad(3000);
+				Thread.sleep(2000);
+				String support = Common.findElement("xpath", "//h4[text()='Support']").getText();
+				String message = Common.findElement("xpath", "//label[text()='Message:']").getText();
+				
+				System.out.println(support);
+				System.out.println(message);
+				Common.assertionCheckwithReport(
+						Common.getPageTitle().contains("FlyPigeon") && support.contains("Support")&& message.contains("Message"),
+						"To validate the Support Pop-up on Support page ",
+						"After clicking on the Support helpline button it should display the Support Pop-up",
+						"It Sucessfully display the Support Pop-up after clicking on the Support helpline button",
+						"Failed to click Support helpline and not displayed the Support Pop-up ");
+
+			}
+			catch(Exception |Error e) {
+				e.printStackTrace();
+				ExtenantReportUtils.addFailedLog("To validate the Support Pop-up on Support page ",
+						"After clicking on the Support helpline button it should display the Support Pop-up",
+						"Unable to display the Support Pop-up after clicking on the Support helpline button",
+						Common.getscreenShotPathforReport("Failed to click Support helpline and not displayed the Support Pop-up "));
+
+				Assert.fail();
+			}
+		}
 		
 
 	

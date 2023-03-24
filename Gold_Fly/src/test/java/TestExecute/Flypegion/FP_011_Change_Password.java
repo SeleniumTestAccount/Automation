@@ -29,7 +29,7 @@ public class FP_011_Change_Password {
 
 	@AfterTest
 	public void clearBrowser() {
-//		Common.closeAll();
+		Common.closeAll();
 
 	}
 

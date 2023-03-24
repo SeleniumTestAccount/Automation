@@ -4,7 +4,7 @@
         <listener class-name="Utilities.TestListener"/>
     </listeners>
     
-       <test name="Test_FP_001_Login_And_Logout" testid="FP-001" priority="P1" description="This script will cover validating Login and Logout Functionality">
+        <test name="Test_FP_001_Login_And_Logout" testid="FP-001" priority="P1" description="This script will cover validating Login and Logout Functionality">
 		<classes>
 			<class name="TestExecute.Flypegion.FP_001_Login_And_Logout" />
 		</classes>
@@ -20,17 +20,17 @@
 		</classes>
 	</test> 
 	
-	<test name="Test_FP_004_Invalid_Login_Details" testid="FP-004" priority="P1" description="This script will cover validating Invalid Login Details">
+	<test name="Test_FP_004_Invalid_Login_Details" testid="FP-004" priority="P1" description="This script will cover validating Invalid  and InActive Login Details">
 		<classes>
 			<class name="TestExecute.Flypegion.FP_004_Invalid_Login_Details" />
 		</classes>
-	</test> 
+	</test>  
 	<test name="Test_FP_005_Account_Sign_Up_form_Validation" testid="FP-005" priority="P1" description="This script will cover validating Account Sign Up form Validations">
 		<classes>
 			<class name="TestExecute.Flypegion.FP_005_Account_Sign_Up_form_Validation" />
 		</classes>
 	</test>  
-	<test name="Test_FP_006_Account_Sign_Up" testid="FP-006" priority="P1" description="This script will cover validating Account Sign Up Functionality">
+	 <test name="Test_FP_006_Account_Sign_Up" testid="FP-006" priority="P1" description="This script will cover validating Agent Account Sign Up Functionality">
 		<classes>
 			<class name="TestExecute.Flypegion.FP_006_Account_Sign_Up" />
 		</classes>
@@ -39,13 +39,39 @@
 		<classes>
 			<class name="TestExecute.Flypegion.FP_007_Dashboard_Menu_validation" />
 		</classes>
-	</test> 
+	</test>  
+	
 	<test name="Test_FP_008_Footer_Links" testid="FP-008" priority="P1" description="This script will cover validating Footer links Functionality">
 		<classes>
 			<class name="TestExecute.Flypegion.FP_008_Footer_Links" />
 		</classes>
-	</test> 
+	</test>  
+	<test name="Test_FP_009_Account_Sign_Up_Corporate" testid="FP-009" priority="P1" description="This script will cover validating Corporate Account Sign Up Functionality">
+		<classes>
+			<class name="TestExecute.Flypegion.FP_009_Account_Sign_Up_Corporate" />
+		</classes>
+	</test>
+	<test name="Test_FP_010_Account_Sign_Up_Individual" testid="FP-010" priority="P1" description="This script will cover validating Individual Account Sign Up Functionality">
+		<classes>
+			<class name="TestExecute.Flypegion.FP_010_Account_Sign_Up_Individual" />
+		</classes>
+	</test>
 	
+	<test name="Test_FP_011_Change_Password" testid="FP-011" priority="P1" description="This script will cover validating Change Password Functionality">
+		<classes>
+			<class name="TestExecute.Flypegion.FP_011_Change_Password" />
+		</classes>
+	</test>
+	<test name="Test_FP_012_Support" testid="FP-012" priority="P1" description="This script will cover validating Support Functionality">
+		<classes>
+			<class name="TestExecute.Flypegion.FP_012_Support" />
+		</classes>
+	</test>
+	<test name="Test_FP_013_Update_Balance" testid="FP-013" priority="P1" description="This script will cover validating Update Balance Functionality">
+		<classes>
+			<class name="TestExecute.Flypegion.FP_013_Update_Balance" />
+		</classes>
+	</test>
 	
         </suite>  
         
