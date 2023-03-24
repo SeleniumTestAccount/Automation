@@ -674,5 +674,49 @@ public class FlyPegionHelper {
 			}
 		}
 
+		public void change_Password() {
+			// TODO Auto-generated method stub
+			try
+			{
+				Sync.waitElementPresent("xpath","//div[contains(@class,'MuiListItemText-root')]//span[text()='Change Password']");
+				Common.clickElement("xpath","//div[contains(@class,'MuiListItemText-root')]//span[text()='Change Password']");
+				Thread.sleep(2000);
+				String title = Common.findElement("xpath", "//h1").getText(); 
+				System.out.println(title);
+				Common.assertionCheckwithReport(title.contains("Change Password"),
+						"verifying the change password page navigation",
+						"user should able to navigate to the change password page ",
+						"user successfully Navigated to the change password page ",
+						" Failed click on the navigate to the change password page ");
+				Sync.waitElementPresent("xpath", "//input[@name='oldPassword']"); 
+				Common.textBoxInput("xpath", "//input[@name='oldPassword']", "Ilusandy@2001"); 
+				Sync.waitElementPresent("xpath", "//input[@name='newPassword']"); 
+				Common.textBoxInput("xpath", "//input[@name='newPassword']", "Ilusandy@2001");
+				Sync.waitElementPresent("xpath", "//input[@name='confirmNewPassword']"); 
+				Common.textBoxInput("xpath", "//input[@name='confirmNewPassword']", "Ilusandy@2001"); 
+				Common.clickElement("xpath", "//button[@type='submit']");
+				Thread.sleep(2000); 
+				Sync.waitElementPresent("xpath", "//div[@class='Toastify__toast-body']//p"); 
+				Common.mouseOver("xpath", "//div[@class='Toastify__toast-body']//p"); 
+				String message = Common.findElement("xpath", "//div[@class='Toastify__toast-body']//p").getText();
+				Common.assertionCheckwithReport(message.contains("password"),
+						"To validate the password change functionality ",
+						"After clicking on the submit button the password should be change sucessfully ",
+						"sucessfully password has been changed", "Failed to change the password");
+			}
+			catch(Exception | Error e)
+			{
+				e.printStackTrace();
+				ExtenantReportUtils.addFailedLog("To validate the password change functionality ",
+						"After clicking on the submit button the password should be change sucessfully ",
+						"Unable to change the password ",
+						Common.getscreenShotPathforReport("Failed to change the password "));
+				Assert.fail();
+			}
+			
+		}
+		
+		
+
 	
 }
