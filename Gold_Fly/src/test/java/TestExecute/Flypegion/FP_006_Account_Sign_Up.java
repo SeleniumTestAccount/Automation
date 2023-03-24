@@ -18,6 +18,7 @@ public class FP_006_Account_Sign_Up {
 		try {
 			FlyPegion.verifyHomePage();
 			FlyPegion.Click_Sign_Up();
+			FlyPegion.agent_Sign_Up();
 			FlyPegion.Sign_up();
 		
 			

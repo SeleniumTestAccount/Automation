@@ -8,18 +8,19 @@ import TestComponent.Fly_Pegion.FlyPegionHelper;
 import TestLib.Common;
 import TestLib.Login;
 
-public class FP_004_Invalid_Login_Details {
+public class FP_010_Account_Sign_Up_Individual {
 
 	String datafile = "FlyPegion//FlyPegionTestData.xlsx";
 	FlyPegionHelper FlyPegion = new FlyPegionHelper(datafile, "DataSet");
 
 	@Test(retryAnalyzer = Utilities.RetryAnalyzer.class)
-	public void Verify_Invalid_Login_Details_Functionality() {
+	public void Verify_Individual_Account_Sign_Up() {
 		try {
 			FlyPegion.verifyHomePage();
-			FlyPegion.click_Login();
-			FlyPegion.Invalid_login_Details();
-			FlyPegion.in_Active_login_Details();
+			FlyPegion.Click_Sign_Up();
+			FlyPegion.individual_Sign_Up();
+			FlyPegion.Sign_up();
+		
 			
 
 		} catch (Exception e) {

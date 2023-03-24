@@ -288,18 +288,22 @@ public class FlyPegionHelper {
 			
 			Common.textBoxInput("xpath", "//input[@placeholder='Enter your username']", "FPGNLT000033");
 			Common.textBoxInput("xpath", "//input[@placeholder='Enter your password']", "Ilusandy@");
+			
 			Common.clickElement("xpath", "//button[text()='Login']");
-			Sync.waitPageLoad(3000);
-			Thread.sleep(1000);
-			String alert = Common.findElement("xpath", "//div[@class='Toastify']/div").getAttribute("class");
+//			Sync.waitPageLoad(1000);
+			Thread.sleep(2000);
+			Sync.waitElementPresent("xpath", "//div[@class='Toastify__toast-body']//p");
+			Common.mouseOver("xpath", "//div[@class='Toastify__toast-body']//p");
+			String alert = Common.findElement("xpath", "//div[@class='Toastify__toast-body']//p").getText();
 			System.out.println(alert);
 			Common.assertionCheckwithReport(
-					Common.getPageTitle().contains("FlyPigeon") && alert.contains("Toastify") ,
+					Common.getPageTitle().contains("FlyPigeon") && alert.contains("invalid login ") ,
 					"To validate the Invalid login Credentials",
 					"After clicking on the login button it should display  alert as Invalid login credentials",
 					"It displays the alert Invalid login credentials after clicking on the login button",
 					"Failed to login and display alert as Invalid login credentials ");
-
+			Common.mouseOver("xpath", "//button[text()='Login']");
+			Thread.sleep(3000);
 		}
 		catch(Exception |Error e) {
 			e.printStackTrace();
@@ -349,13 +353,101 @@ public class FlyPegionHelper {
 		
 	}
 
+	public void corporate_Sign_Up() {
+		// TODO Auto-generated method stub
+		try
+		{
+			Sync.waitElementPresent("xpath", "//input[@id='corporate']");
+			Common.clickElement("xpath", "//input[@id='corporate']");
+			Sync.waitPageLoad();
+			Thread.sleep(3000);
+			String servicetype=Common.findElement("xpath", "//h4[contains(text(),'Service Type')]").getText();
+			Common.assertionCheckwithReport(
+					servicetype.contains("Service Type"),
+					"To validate the Service Type selection in SignUp page",
+					"After clicking the Service Type radio button it should select the Service Type ",
+					"Sucessfully selected the Service Type after clicking the Service Type radio button",
+					"Failed to select the Service Type in signup page");
+			
+		}
+		catch(Exception | Error e)
+		{
+			e.printStackTrace();
+			ExtenantReportUtils.addFailedLog("To validate the Service Type selection in SignUp page",
+					"After clicking on the Service Type radio button it should select the Service Type  ",
+					"Unable to select the Service Type after clicking the Service Type radio button",
+					Common.getscreenShotPathforReport("Failed to select the Service Type signup page"));
+			Assert.fail();
+		}
+		
+	}
+	
+	public void individual_Sign_Up() {
+		// TODO Auto-generated method stub
+		try
+		{
+			Sync.waitElementPresent("xpath", "//input[@id='individual']");
+			Common.clickElement("xpath", "//input[@id='individual']");
+			Sync.waitPageLoad();
+			Thread.sleep(3000);
+			String servicetype=Common.findElement("xpath", "//h4[contains(text(),'Service Type')]").getText();
+			Common.assertionCheckwithReport(
+					servicetype.contains("Service Type"),
+					"To validate the Service Type selection in SignUp page",
+					"After clicking the Service Type radio button it should select the Service Type ",
+					"Sucessfully selected the Service Type after clicking the Service Type radio button",
+					"Failed to select the Service Type in signup page");
+			
+		}
+		catch(Exception | Error e)
+		{
+			e.printStackTrace();
+			ExtenantReportUtils.addFailedLog("To validate the Service Type selection in SignUp page",
+					"After clicking on the Service Type radio button it should select the Service Type  ",
+					"Unable to select the Service Type after clicking the Service Type radio button",
+					Common.getscreenShotPathforReport("Failed to select the Service Type signup page"));
+			Assert.fail();
+		}
+		
+	}
+	
+	public void agent_Sign_Up() {
+		// TODO Auto-generated method stub
+		try
+		{
+			Sync.waitElementPresent("xpath", "//input[@id='agent']");
+			Common.clickElement("xpath", "//input[@id='agent']");
+			Sync.waitPageLoad();
+			Thread.sleep(3000);
+			String servicetype=Common.findElement("xpath", "//h4[contains(text(),'Service Type')]").getText();
+			Common.assertionCheckwithReport(
+					servicetype.contains("Service Type"),
+					"To validate the Service Type selection in SignUp page",
+					"After clicking the Service Type radio button it should select the Service Type ",
+					"Sucessfully selected the Service Type after clicking the Service Type radio button",
+					"Failed to select the Service Type in signup page");
+			
+		}
+		catch(Exception | Error e)
+		{
+			e.printStackTrace();
+			ExtenantReportUtils.addFailedLog("To validate the Service Type selection in SignUp page",
+					"After clicking on the Service Type radio button it should select the Service Type  ",
+					"Unable to select the Service Type after clicking the Service Type radio button",
+					Common.getscreenShotPathforReport("Failed to select the Service Type signup page"));
+			Assert.fail();
+		}
+		
+	}
+	
+	
+	
 	public void Sign_up() {
 		// TODO Auto-generated method stub
 		
 		try
 		{
-			Sync.waitElementPresent("xpath", "//input[@id='agent']");
-			Common.clickElement("xpath", "//input[@id='agent']");
+			
 			Common.dropdown("xpath", "//select[@id='title']", Common.SelectBy.TEXT, "Mr");
 			Common.textBoxInput("xpath", "//input[@name='firstName']", "Test");
 			Common.textBoxInput("xpath", "//input[@name='lastName']", "Auto");
@@ -526,7 +618,7 @@ public class FlyPegionHelper {
 				  Common.scrollIntoView("xpath", "//a[contains(@class,'Footer') and contains(text(),'"+Footer[i]+"')]");
 			  Common.clickElement("xpath","//a[contains(@class,'Footer') and contains(text(),'"+Footer[i]+"')]");
 			  Sync.waitPageLoad();
-			 Thread.sleep(2000);
+			 Thread.sleep(4000);
 			 Common.switchWindows();
 			 String title = Common.findElement("xpath", "//h1").getText();
 			 String title1 = Common.findElement("xpath", "//h1").getTagName();
@@ -538,6 +630,7 @@ public class FlyPegionHelper {
 			  Common.assertionCheckwithReport(title1.contains("h1") ||Common.getPageTitle().contains("FlyPigeon"),"Validate the Footer link "+Footer[i], "Click the footer link "+Footer[i]+"it will navigate to page"+Footer[i], "successfully navigating to "+Footer[i] +"page ","Failed to navigate to"+Footer[i]+"page");
 			  }
 			  Common.closeCurrentWindow();
+			  Thread.sleep(2000);
 			Common.switchToFirstTab();
 			  }
 			  
@@ -556,12 +649,14 @@ public class FlyPegionHelper {
 				Common.textBoxInput("xpath", "//input[@placeholder='Enter your username']", "FPGNCI000041A");
 				Common.textBoxInput("xpath", "//input[@placeholder='Enter your password']", "Testauto@23");
 				Common.clickElement("xpath", "//button[text()='Login']");
-				Sync.waitPageLoad(3000);
-				Thread.sleep(1000);
-				String alert = Common.findElement("xpath", "//div[@class='Toastify']/div").getAttribute("class");
+//				Sync.waitPageLoad(1000);
+				Thread.sleep(2000);
+				Sync.waitElementPresent("xpath", "//div[@class='Toastify__toast-body']//p");
+				Common.mouseOver("xpath", "//div[@class='Toastify__toast-body']//p");
+				String alert = Common.findElement("xpath", "//div[@class='Toastify__toast-body']//p").getText();
 				System.out.println(alert);
 				Common.assertionCheckwithReport(
-						Common.getPageTitle().contains("FlyPigeon") && alert.contains("Toastify") ,
+						Common.getPageTitle().contains("FlyPigeon") && alert.contains("inactive b2b") ,
 						"To validate the InActive login Credentials",
 						"After clicking on the login button it should display  alert as InActive login credentials",
 						"It displays the alert InActive login credentials after clicking on the login button",
