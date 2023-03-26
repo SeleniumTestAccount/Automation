@@ -17,7 +17,7 @@ public class FP_001_Login_And_Logout {
 		try {
 			FlyPegion.verifyHomePage();
 			FlyPegion.click_Login();
-			FlyPegion.login_Details();
+			FlyPegion.login_Details("Account");
 			FlyPegion.logout();
 
 		} catch (Exception e) {

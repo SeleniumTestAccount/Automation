@@ -17,7 +17,7 @@ public class FP_013_Update_Balance {
 		try {
 			FlyPegion.verifyHomePage();
 			FlyPegion.click_Login();
-			FlyPegion.login_Details();
+			FlyPegion.login_Details("Account");
 			FlyPegion.update_Balance("Balance");
 
 		} catch (Exception e) {

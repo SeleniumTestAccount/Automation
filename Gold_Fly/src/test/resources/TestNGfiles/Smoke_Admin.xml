@@ -56,13 +56,12 @@
 			<class name="TestExecute.Flypegion.FP_010_Account_Sign_Up_Individual" />
 		</classes>
 	</test>
-	
 	<test name="Test_FP_011_Change_Password" testid="FP-011" priority="P1" description="This script will cover validating Change Password Functionality">
 		<classes>
 			<class name="TestExecute.Flypegion.FP_011_Change_Password" />
 		</classes>
 	</test>
-	<test name="Test_FP_012_Support" testid="FP-012" priority="P1" description="This script will cover validating Support Functionality">
+	 <test name="Test_FP_012_Support" testid="FP-012" priority="P1" description="This script will cover validating Support Functionality">
 		<classes>
 			<class name="TestExecute.Flypegion.FP_012_Support" />
 		</classes>
@@ -72,6 +71,5 @@
 			<class name="TestExecute.Flypegion.FP_013_Update_Balance" />
 		</classes>
 	</test>
-	
         </suite>  
         

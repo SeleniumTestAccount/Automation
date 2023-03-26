@@ -96,10 +96,10 @@ public class FlyPegionHelper {
 		}
 	}
 	
-	public void login_Details() {
+	public void login_Details(String Dataset) {
 		try {
-			Common.textBoxInput("xpath", "//input[@placeholder='Enter your username']", "FPGNLT000033A");
-			Common.textBoxInput("xpath", "//input[@placeholder='Enter your password']", "Ilusandy@2001");
+			Common.textBoxInput("xpath", "//input[@placeholder='Enter your username']", data.get(Dataset).get("Username"));
+			Common.textBoxInput("xpath", "//input[@placeholder='Enter your password']", data.get(Dataset).get("Password"));
 			Common.clickElement("xpath", "//button[text()='Login']");
 			Sync.waitPageLoad(3000);
 			Thread.sleep(5000);
@@ -232,7 +232,7 @@ public class FlyPegionHelper {
 	public void registration_Status_check() {
 		try {
 			Sync.waitElementPresent("xpath", "//input[@id='referenceID']");
-			Common.textBoxInput("xpath", "//input[@id='referenceID']", "FPGNLT000033A");
+			Common.textBoxInput("xpath", "//input[@id='referenceID']", "FPGNDD000008A");
 			Common.clickElement("xpath", "//button[text()='Get Status']");
 			Sync.waitPageLoad();
 			Thread.sleep(3000);
@@ -646,7 +646,7 @@ public class FlyPegionHelper {
 		public void in_Active_login_Details() {
 			try {
 				
-				Common.textBoxInput("xpath", "//input[@placeholder='Enter your username']", "FPGNCI000041A");
+				Common.textBoxInput("xpath", "//input[@placeholder='Enter your username']", "FPGNDD000008A");
 				Common.textBoxInput("xpath", "//input[@placeholder='Enter your password']", "Testauto@23");
 				Common.clickElement("xpath", "//button[text()='Login']");
 //				Sync.waitPageLoad(1000);
@@ -674,7 +674,7 @@ public class FlyPegionHelper {
 			}
 		}
 
-		public void change_Password() {
+		public void change_Password(String Dataset) {
 			// TODO Auto-generated method stub
 			try
 			{
@@ -689,11 +689,11 @@ public class FlyPegionHelper {
 						"user successfully Navigated to the change password page ",
 						" Failed click on the navigate to the change password page ");
 				Sync.waitElementPresent("xpath", "//input[@name='oldPassword']"); 
-				Common.textBoxInput("xpath", "//input[@name='oldPassword']", "Ilusandy@2001"); 
+				Common.textBoxInput("xpath", "//input[@name='oldPassword']", data.get(Dataset).get("Password")); 
 				Sync.waitElementPresent("xpath", "//input[@name='newPassword']"); 
-				Common.textBoxInput("xpath", "//input[@name='newPassword']", "Ilusandy@2001");
+				Common.textBoxInput("xpath", "//input[@name='newPassword']", data.get(Dataset).get("Password"));
 				Sync.waitElementPresent("xpath", "//input[@name='confirmNewPassword']"); 
-				Common.textBoxInput("xpath", "//input[@name='confirmNewPassword']", "Ilusandy@2001"); 
+				Common.textBoxInput("xpath", "//input[@name='confirmNewPassword']", data.get(Dataset).get("Password")); 
 				Common.clickElement("xpath", "//button[@type='submit']");
 				Thread.sleep(2000); 
 				Sync.waitElementPresent("xpath", "//div[@class='Toastify__toast-body']//p"); 
@@ -733,6 +733,7 @@ public class FlyPegionHelper {
 				Common.textBoxInput("xpath", "//input[@type='number']", data.get(Dataset).get("Update Balance"));
 				Common.clickElement("xpath", "//button[text()='Top Up Wallet']");
 				Thread.sleep(3000);
+				Common.switchFrames("xpath", "//iframe[@class='razorpay-checkout-frame']");
 				String payment=Common.findElement("xpath", "//p[contains(@title,'FlyPigeon Digital')]").getText();
 				Common.assertionCheckwithReport(payment.contains("FlyPigeon Digital"),
 						"verifying the FlyPigeon Digital popup",
@@ -740,10 +741,11 @@ public class FlyPegionHelper {
 						"Sucessfully user able to see the FlyPigeon Digital popup ",
 						" Failed to see the FlyPigeon Digital popup");
 				Common.clickElement("xpath", "//input[@name='contact']");
-				Common.textBoxInput("xpath", "//input[@name='contact']", data.get(Dataset).get("phone"));
-				Common.clickElement("xpath", "//button[@class='svelte-13mgn3i']");
-				Thread.sleep(3000);
-				String paymentpage=Common.findElement("xpath", "//h3[@class='title svelte-bm563m']").getText();
+				Common.textBoxInput("xpath", "//input[@name='contact']", data.get(Dataset).get("Phone"));
+				Common.clickElement("xpath", "//button[text()='Proceed']");
+				Thread.sleep(4000);
+				Sync.waitPageLoad();
+				String paymentpage=Common.findElement("xpath", "//h3[text()='Pay With UPI QR']").getText();
 				Common.assertionCheckwithReport(paymentpage.contains("Pay With UPI QR"),
 						"verifying the payment page",
 						"user should able to navigate to the payment page after clicking on the proceed button ",
@@ -792,15 +794,15 @@ public class FlyPegionHelper {
 			}
 		}
 
-		public void support_form() {
+		public void support_form(String Dataset) {
 			try {
 				
 				Common.textBoxInput("xpath", "(//input[@placeholder='yyyy/mm/dd'])[1]", "2023/03/05");
 				Common.textBoxInput("xpath", "(//input[@placeholder='yyyy/mm/dd'])[2]", "2023/03/24");
 				
-				Common.textBoxInput("xpath", "//input[@id='txnId']", "FPGNCALL000090");
-				Common.textBoxInput("xpath", "//input[@id='conatactNo']", "8186886443");
-				Common.textBoxInput("xpath", "//input[@id='emailId']", "premanath@tekkrexim.in");
+				Common.textBoxInput("xpath", "//input[@id='txnId']", data.get(Dataset).get("QueryID"));
+				Common.textBoxInput("xpath", "//input[@id='conatactNo']", data.get(Dataset).get("Phone"));
+				Common.textBoxInput("xpath", "//input[@id='emailId']", data.get(Dataset).get("Email"));
 				Common.clickElement("xpath", "//button[text()='Search']");
 				Sync.waitPageLoad(3000);
 				Thread.sleep(2000);
@@ -831,16 +833,20 @@ public class FlyPegionHelper {
 			}
 		}
 
-		public void support_bot() {
+		public void support_bot(String Dataset) {
+			
+			String email = data.get(Dataset).get("Email");
+			String phone = data.get(Dataset).get("Phone");
+			
 			try {
 				Common.clickElement("xpath", "//button[contains(@class,'Support_supportBtn_')]");
 				WebElement Select_all = Common.findElement("xpath", "//input[@id='phone']");
 				Select_all.sendKeys(Keys.CONTROL + "a");
-				Common.findElement("xpath", "//input[@id='phone']").sendKeys("8186886443");
+				Common.findElement("xpath", "//input[@id='phone']").sendKeys(phone);
 				WebElement Selectall = Common.findElement("xpath", "//input[@id='email']");
 				Selectall.sendKeys(Keys.CONTROL + "a");
 				
-				Common.findElement("xpath", "//input[@id='email']").sendKeys("premanath@tekkrexim.in");
+				Common.findElement("xpath", "//input[@id='email']").sendKeys(email);
 
 //				Common.textBoxInput("xpath", "//input[@id='phone']", "8186886443");
 //				Common.textBoxInput("xpath", "//input[@id='email']", "premanath@tekkrexim.in");

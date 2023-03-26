@@ -18,10 +18,10 @@ public class FP_012_Support {
 		try {
 			FlyPegion.verifyHomePage();
 			FlyPegion.click_Login();
-			FlyPegion.login_Details();
+			FlyPegion.login_Details("Account");
 		    FlyPegion.click_Support();
-		    FlyPegion.support_form();
-		    FlyPegion.support_bot();
+		    FlyPegion.support_form("Support");
+		    FlyPegion.support_bot("Support");
 
 		} catch (Exception e) {
 

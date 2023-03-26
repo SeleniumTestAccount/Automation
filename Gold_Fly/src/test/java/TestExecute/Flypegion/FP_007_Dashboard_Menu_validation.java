@@ -17,7 +17,7 @@ public class FP_007_Dashboard_Menu_validation {
 		try {
 			FlyPegion.verifyHomePage();
 			FlyPegion.click_Login();
-			FlyPegion.login_Details();
+			FlyPegion.login_Details("Account");
 			FlyPegion.Dashboard_validation("Account");
 
 		} catch (Exception e) {

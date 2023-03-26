@@ -17,10 +17,10 @@ public class FP_011_Change_Password {
 		try {
 			FlyPegion.verifyHomePage();
 			FlyPegion.click_Login();
-			FlyPegion.login_Details();
-		    FlyPegion.change_Password();
+			FlyPegion.login_Details("Account");
+		    FlyPegion.change_Password("Account");
 		    FlyPegion.click_Login();
-		    FlyPegion.login_Details();
+		    FlyPegion.login_Details("Account");
 
 		} catch (Exception e) {
 
