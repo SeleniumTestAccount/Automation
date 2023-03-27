@@ -18,7 +18,13 @@ public class FP_014_Buses_Booking {
 			FlyPegion.verifyHomePage();
 			FlyPegion.click_Login();
 			FlyPegion.login_Details("Account");
+			FlyPegion.top();
 			FlyPegion.buses("Buses");
+			FlyPegion.bus_selection();
+			FlyPegion.bus_passenger("Buses");
+			FlyPegion.payment();
+			
+			
 
 		} catch (Exception e) {
 

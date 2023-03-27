@@ -4,7 +4,7 @@
         <listener class-name="Utilities.TestListener"/>
     </listeners>
     
-        <test name="Test_FP_001_Login_And_Logout" testid="FP-001" priority="P1" description="This script will cover validating Login and Logout Functionality">
+         <test name="Test_FP_001_Login_And_Logout" testid="FP-001" priority="P1" description="This script will cover validating Login and Logout Functionality">
 		<classes>
 			<class name="TestExecute.Flypegion.FP_001_Login_And_Logout" />
 		</classes>
@@ -55,7 +55,7 @@
 		<classes>
 			<class name="TestExecute.Flypegion.FP_010_Account_Sign_Up_Individual" />
 		</classes>
-	</test>
+	</test> 
 	<test name="Test_FP_011_Change_Password" testid="FP-011" priority="P1" description="This script will cover validating Change Password Functionality">
 		<classes>
 			<class name="TestExecute.Flypegion.FP_011_Change_Password" />
@@ -66,9 +66,20 @@
 			<class name="TestExecute.Flypegion.FP_012_Support" />
 		</classes>
 	</test>
-	<test name="Test_FP_013_Update_Balance" testid="FP-013" priority="P1" description="This script will cover validating Update Balance Functionality">
+	<test name="Test_FP_013_Update_Balance" testid="FP-013" priority="P1" description="This script will cover validating Update Balance, Payment Page">
 		<classes>
 			<class name="TestExecute.Flypegion.FP_013_Update_Balance" />
+		</classes>
+	</test>
+	
+	<test name="Test_FP_014_Buses_Booking" testid="FP-014" priority="P1" description="This script will cover validating Buses search, selecting buses, updating details, Payment Page">
+		<classes>
+			<class name="TestExecute.Flypegion.FP_014_Buses_Booking" />
+		</classes>
+	</test>
+	<test name="Test_FP_015_Flight_Booking" testid="FP-015" priority="P1" description="This script will cover validating Flight search, selection Payment Page">
+		<classes>
+			<class name="TestExecute.Flypegion.FP_015_Flight_Booking" />
 		</classes>
 	</test>
         </suite>  

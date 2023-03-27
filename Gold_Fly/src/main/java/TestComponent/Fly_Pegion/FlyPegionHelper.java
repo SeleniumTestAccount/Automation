@@ -13,6 +13,7 @@ import org.testng.Assert;
 
 import TestLib.Automation_properties;
 import TestLib.Common;
+import TestLib.Common.SelectBy;
 import TestLib.Sync;
 import Utilities.ExcelReader;
 import Utilities.ExtenantReportUtils;
@@ -1042,5 +1043,161 @@ public class FlyPegionHelper {
 			
 		}
 
-	
+		public void top() {
+			
+			try {
+				Common.clickElement("xpath", "//span[text()='Buses']");
+				Sync.waitPageLoad(3000);
+				Thread.sleep(2000);
+				int top = Common.findElements("xpath", "//div[contains(@class,'BusSearch_topBusRouteDivOne')]/p").size();
+				
+				Sync.waitPageLoad();
+				for(int i=1;i<top-17;i++) {
+					System.out.println(i);
+//					List<WebElement> to = Common.findElements("xpath", "//div[contains(@class,'BusSearch_topBusRouteDivOne')]/p");
+//					System.out.println(to);
+					String to= Common.getText("xpath", "(//div[contains(@class,'BusSearch_topBusRouteDivOne')]/p)["+i+"]");
+					System.out.println(to);
+					Common.clickElement("xpath", "(//div[contains(@class,'BusSearch_topBusRouteDivOne')]/p)["+i+"]");
+					Thread.sleep(3000);
+					Common.navigateBack();
+				
+						Common.assertionCheckwithReport(
+						Common.getPageTitle().contains("FlyPigeon"),
+						"validating the Top Bus Routes"+to, "System directs the user to the Top Bus Routes"+to,
+						"Sucessfully user navigates to the Top Bus Routes"+to, "Failed to navigate to the Top Bus Routes"+to);
+				}
+			}
+				catch (Exception | Error e) {
+				e.printStackTrace();
+
+				ExtenantReportUtils.addFailedLog("validating the Top Bus Routes", "System directs the user to the Top Bus Routes",
+						" user unable navigates to the Top Bus Routes", "Failed to navigate to the Top Bus Routes");
+				Assert.fail();
+			}
+
+		}
+		
+		public void bus_selection() {
+			
+			try
+			{
+			   Sync.waitElementPresent("xpath", "(//button[text()='SELECT SEAT'])[1]");
+			   Common.clickElement("xpath", "(//button[text()='SELECT SEAT'])[1]");
+			   
+			   Sync.waitElementPresent("xpath", "//input[@name='boardingPoint' and contains(@value,'Ashok Nagar (BHEL)')]");
+			   Common.clickElement("xpath", "//input[@name='boardingPoint' and contains(@value,'Ashok Nagar (BHEL)')]");
+			   
+			   Common.clickElement("xpath", "//input[@name='droppingPoint' and contains(@value,'Vijayawada')]");
+			   Common.clickElement("xpath", "(//div[contains(@class,'BusSeat_seat__7XmpE BusSeat_availableSeat_')]/small)[3]");
+			   
+			   String seats=Common.findElement("xpath", "//p[contains(text(),'Select Seats')]").getText();
+			   Common.assertionCheckwithReport(
+					   seats.contains("Select Seats"),
+						"To validate the Choose Seats  ",
+						"After clicking on the select seat should navigate to Choose Seats ",
+						"Sucessfully navigated to Choose Seats  ",
+						"Failed to navigate to the Choose Seats");
+			   
+			   Sync.waitElementPresent("xpath", " //button[text()='Continue']");
+			   Common.clickElement("xpath", " //button[text()='Continue']");
+			   Sync.waitPageLoad();
+			   Thread.sleep(3000);
+			   String review=Common.findElement("xpath", "//a[text()='Itinerary Review']").getText();
+			   
+			  
+			   Common.assertionCheckwithReport(
+					   review.contains("Itinerary Review"),
+						"To validate the Itinerary Review page ",
+						"After clicking on the Continue should navigate to Itinerary Review",
+						"Sucessfully "+ review + "page has been displayed after clicking on the continue",
+						"Failed to navigate to  the "+ review + " page");
+			}
+			catch(Exception | Error e)
+			{
+				e.printStackTrace();
+				ExtenantReportUtils.addFailedLog("To validate the Choose Seats ",
+						"After clicking the select seat should navigate to Choose Seats",
+						"Unable to navigate to the Choose Seats",
+						Common.getscreenShotPathforReport("Failed to navigate to the Choose Seats"));
+
+				Assert.fail();
+			}
+			
+		}
+		
+			public void bus_passenger(String Dataset) {
+			
+			try
+			{
+				Sync.waitElementPresent("xpath", " //button[text()='Continue']");
+				   Common.clickElement("xpath", " //button[text()='Continue']");
+				
+			   String passenger=Common.findElement("xpath", "//p[text()='Traveller Details']").getText();
+			   Common.assertionCheckwithReport(
+					   passenger.contains("Traveller Details"),
+						"To validate the Passenger Details  ",
+						"After clicking on the continue should navigate to Passenger Details ",
+						"Sucessfully navigated to the Passenger Details  ",
+						"Failed to navigate to the Passenger Details");
+			   
+			   Sync.waitElementPresent("xpath", " //input[@name='phone']");
+			   Common.textBoxInput("xpath", "//input[@name='phone']",data.get(Dataset).get("Phone"));
+			   Common.textBoxInput("xpath", "//input[@name='email']",data.get(Dataset).get("Email"));
+			   Common.textBoxInput("xpath", "//input[@placeholder='First Name']",data.get(Dataset).get("FirstName"));
+			   Common.textBoxInput("xpath", "//input[@placeholder='Last Name']",data.get(Dataset).get("LastName"));
+			   Common.textBoxInput("xpath", "//input[@placeholder='Age']",data.get(Dataset).get("Age"));
+			   Common.dropdown("xpath", "//select[@name='gender']", SelectBy.VALUE, data.get(Dataset).get("Gender"));
+			   Sync.waitPageLoad();
+			   Thread.sleep(3000);
+			   String PassengerDetails=Common.findElement("xpath", "//a[text()='Passenger Details']").getText();
+			   
+			   Common.assertionCheckwithReport(
+					   PassengerDetails.contains("Passenger Details")|| Common.getPageTitle().contains("FlyPegion"),
+						"To validate the Passenger Details information  ",
+						"Details are filled in the Passenger Details page",
+						"Sucessfully "+ PassengerDetails + "page has been filled with details",
+						"Failed to enter to the "+ PassengerDetails + " page");
+			}
+			catch(Exception | Error e)
+			{
+				e.printStackTrace();
+				ExtenantReportUtils.addFailedLog("To validate the PassengerDetails ",
+						"After clicking the continue should navigate to Passenger Details",
+						"Unable to navigate to the Passenger Details",
+						Common.getscreenShotPathforReport("Failed to navigate to the Passenger Details"));
+
+				Assert.fail();
+			}
+			
+		}
+			
+			public void payment() {
+				try {
+					Sync.waitElementPresent("xpath", " //button[text()='Continue']");
+					   Common.clickElement("xpath", " //button[text()='Continue']");
+					Sync.waitPageLoad(3000);
+					String payment = Common.findElement("xpath", "//a[text()='Payment']").getText();
+					String proceed = Common.findElement("xpath", "//button[text()='Proceed']").getText();
+					System.out.println(payment);
+					System.out.println(proceed);
+					Common.assertionCheckwithReport(
+							Common.getPageTitle().contains("FlyPigeon") && payment.contains("Payment")&& proceed.contains("Proceed"),
+							"To validate the user lands on Payment page",
+							"It should navigate to the Payment page",
+							"user Sucessfully navigated to the Payment page ",
+							"Failed and not navigated to the Payment page ");
+
+				}
+				catch(Exception |Error e) {
+					e.printStackTrace();
+					ExtenantReportUtils.addFailedLog("To validate the user user lands on Payment page",
+							"It should navigate to the Payment page",
+							"Unable to navigate the user to the Payment page",
+							Common.getscreenShotPathforReport("Failed and not navigated to the Payment page "));
+
+					Assert.fail();
+				}
+			}
+
 }
