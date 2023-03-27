@@ -7,7 +7,7 @@ import TestComponent.Fly_Pegion.FlyPegionHelper;
 import TestLib.Common;
 import TestLib.Login;
 
-public class FP_014_Buses_search {
+public class FP_014_Buses_Booking {
 
 	String datafile = "FlyPegion//FlyPegionTestData.xlsx";
 	FlyPegionHelper FlyPegion = new FlyPegionHelper(datafile, "DataSet");
@@ -27,7 +27,7 @@ public class FP_014_Buses_search {
 
 	@AfterTest
 	public void clearBrowser() {
-//		Common.closeAll();
+		Common.closeAll();
 
 	}
 

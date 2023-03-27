@@ -940,6 +940,96 @@ public class FlyPegionHelper {
 			
 		
 		}
+		
+		public void Flight_Booking(String Dataset) {
+			// TODO Auto-generated method stub
+			String From1=data.get(Dataset).get("From");
+			System.out.println(From1);
+			try
+			{
+				Sync.waitElementPresent("xpath", "//label[text()='From']//parent::div");
+				Common.clickElement("xpath", "//label[text()='From']//parent::div");
+				Common.textBoxInput("xpath", "(//input[@id='standard-basic'])[1]", From1);
+				Thread.sleep(4000);
+		        String From=Common.findElement("xpath", "//div[contains(@class,'AirportAutocompleteInput_airportCo')]").getText();
+		        if(From.equals("BOM"))
+		        {
+		        	Common.clickElement("xpath", "//div[contains(@class,'AirportAutocompleteInput_airportCo')]");
+		        }
+		        else
+		        {
+		        	Assert.fail();
+		        }
+		        Sync.waitElementPresent("xpath", "//label[text()='To']//parent::div");
+		        Common.clickElement("xpath", "//label[text()='To']//parent::div");
+		        Common.textBoxInput("xpath", "(//input[@id='standard-basic'])[2]", data.get(Dataset).get("To"));
+		        Thread.sleep(4000);
+		        String To=Common.findElement("xpath", "(//div[contains(@class,'AirportAutocompleteInput_airportCo')])[1]").getText();
+		        if(To.equals("HYD"))
+		        {
+		        	Common.clickElement("xpath", "(//div[contains(@class,'AirportAutocompleteInput_airportCo')])[1]");
+		        }
+		        else
+		        {
+		        	Assert.fail();
+		        }
+		        Sync.waitElementPresent("xpath", "//fieldset[@aria-hidden='true']");
+		        Common.clickElement("xpath", "//input[contains(@class,'MuiOutlinedInput-input MuiInputBase-input MuiIn')]");
+		        Thread.sleep(4000);
+		        Common.clickElement("xpath", "//button[@aria-label='Mar 30, 2023']");
+		        Common.clickElement("xpath", "//button[text()='Search Flights']");
+		        Sync.waitPageLoad();
+		        Thread.sleep(5000);
+		        String page=Common.findElement("xpath", "//h3").getText();
+				Common.assertionCheckwithReport(
+						page.contains("Showing best flights"),
+						"To validate the navigation to the flight page ",
+						"After clicking on the submit button it should navigate to the flight detailed page",
+						"Sucessfully navigated to the flight detailed page after clicking on the serach button",
+						"Failed to Navigate to the flight detailed page");
+			}
+			catch(Exception | Error e)
+			{
+				e.printStackTrace();
+				ExtenantReportUtils.addFailedLog("To validate the navigation to the flight page ",
+						"After clicking on the submit button it should navigate to the flight detailed page",
+						"Unable to Navigate to the flight detailed page",
+						Common.getscreenShotPathforReport("Failed to Navigate to the flight detailed page"));
+
+				Assert.fail();
+			}
+		}
+
+		public void air_filters(String Dataset) {
+			// TODO Auto-generated method stub
+			try
+			{
+			   Sync.waitElementPresent("xpath", "(//div[contains(@class,'FlightFilters_de')])[3]");
+			   Common.clickElement("xpath", "(//div[contains(@class,'FlightFilters_de')])[3]");
+			   Sync.waitElementPresent("xpath", "//p[text()='Non-Stop']");
+			   Common.clickElement("xpath", "//p[text()='Non-Stop']");
+			   String stops=Common.findElement("xpath", "//p[text()='Non-Stop']").getText();
+			   Common.assertionCheckwithReport(
+					   stops.contains("Non-Stop"),
+						"To validate the stops filter ",
+						"After clicking on the stops filter filter should be selected",
+						"Sucessfully filers has been seleted ",
+						"Failed to select the filter");
+			   Sync.waitElementPresent("xpath", " //input[@value='Indigo']");
+			   Common.clickElement("xpath", " //input[@value='Indigo']");
+			}
+			catch(Exception | Error e)
+			{
+				e.printStackTrace();
+				ExtenantReportUtils.addFailedLog("To validate the stops filter ",
+						"After clicking on the stops filter filter should be selected",
+						"Unable to select the filter",
+						Common.getscreenShotPathforReport("Failed to select the filter"));
+
+				Assert.fail();
+			}
+			
+		}
 
 	
 }
