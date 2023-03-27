@@ -881,6 +881,65 @@ public class FlyPegionHelper {
 			}
 		}
 		
+		public void buses(String Dataset) {
+			
+			String Leavingfrom = data.get(Dataset).get("LeavingFrom");
+			String Goingto = data.get(Dataset).get("GoingTo");
+			try {
+				
+				Common.clickElement("xpath", "//span[text()='Buses']");
+				Sync.waitPageLoad(3000);
+				Thread.sleep(2000);
+				String bus = Common.findElement("xpath", "//h2[text()='Book Bus Tickets']").getText();
+				String topbuses = Common.findElement("xpath", "//h3[text()='Top Bus Routes']").getText();
+				System.out.println(bus);
+				System.out.println(topbuses);
+				Common.assertionCheckwithReport(
+						Common.getPageTitle().contains("FlyPigeon") && bus.contains("Book Bus Tickets")&& topbuses.contains("Top Bus Routes"),
+						"To validate the user lands on Buses page ",
+						"After clicking on the Buses button it should navigate to the Buses page",
+						"user Sucessfully navigate to the Buses page after clicking on the Buses button",
+						"Failed to click Buses and not navigated to the Buses page ");
+				
+				Common.textBoxInput("xpath", "//input[@id='leavingFrom']", "Hyderabad");
+				Thread.sleep(2000);
+				Common.mouseOverClick("xpath", "//ul[contains(@name,'leavingFromTable')]/li[contains(text(),'"+Leavingfrom+"')][1]");
+				
+				Common.textBoxInput("xpath", "//input[@id='goingTo']", "Vijayawada,");
+				Common.actionsKeyPress(Keys.BACK_SPACE);
+//				Common.findElement("xpath", "//input[@id='goingTo']").click();
+				Thread.sleep(3000);
+				Common.mouseOverClick("xpath", "//ul[contains(@name,'goingToTable')]/li[contains(text(),'"+Goingto+"')]");
+				
+//				Common.textBoxInput("xpath", "//input[@placeholder='yyyy/mm/dd']", data.get(Dataset).get("ToDate"));
+				 Common.clickElement("xpath", "//button[contains(@aria-label,'Choose date')]");
+				 Common.clickElement("xpath", "//button[@aria-label='Mar 30, 2023']");
+				Thread.sleep(2000);
+				Common.clickElement("xpath", "//button[contains(@class,'BusSearch_busSearchBtn')]");
+				Sync.waitPageLoad(3000);
+				Thread.sleep(2000);
+				String modify = Common.findElement("xpath", "//button[contains(@class,'ModifyBusSearch_modifyBus')]").getText();
+				Common.assertionCheckwithReport(
+						Common.getPageTitle().contains("FlyPigeon") && modify.contains("Modify"),
+						"To validate the user lands on Buses search result page ",
+						"After clicking on the Search button it should navigate to the Buses search result page",
+						"user Sucessfully navigate to the Buses search result page after clicking on the search button",
+						"Failed to click Search and not navigated to the Buses search result page ");
+				
+			}
+			catch(Exception |Error e) {
+				e.printStackTrace();
+				ExtenantReportUtils.addFailedLog("To validate the user Navigate to Buses page ",
+						"After clicking on the Buses button it should navigate to the Support page",
+						"Unable to navigate the user to the Buses page after clicking on the Buses button",
+						Common.getscreenShotPathforReport("Failed to click Buses and not navigated to the click page "));
+
+				Assert.fail();
+			}
+			
+			
+		
+		}
 
 	
 }
