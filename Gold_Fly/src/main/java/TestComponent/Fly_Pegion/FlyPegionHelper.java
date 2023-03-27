@@ -798,8 +798,10 @@ public class FlyPegionHelper {
 		public void support_form(String Dataset) {
 			try {
 				
-				Common.textBoxInput("xpath", "(//input[@placeholder='yyyy/mm/dd'])[1]", "2023/03/05");
-				Common.textBoxInput("xpath", "(//input[@placeholder='yyyy/mm/dd'])[2]", "2023/03/24");
+				Common.clickElement("xpath", "(//button[contains(@aria-label,'Choose date')])[1]");
+				 Common.clickElement("xpath", "//button[@aria-label='Mar 20, 2023']");
+//				Common.textBoxInput("xpath", "(//input[@placeholder='yyyy/mm/dd'])[1]", "2023/03/05");
+				Common.textBoxInput("xpath", "(//input[@placeholder='yyyy/mm/dd'])[2]", "2023/03/28");
 				
 				Common.textBoxInput("xpath", "//input[@id='txnId']", data.get(Dataset).get("QueryID"));
 				Common.textBoxInput("xpath", "//input[@id='conatactNo']", data.get(Dataset).get("Phone"));
