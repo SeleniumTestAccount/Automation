@@ -978,11 +978,13 @@ public class FlyPegionHelper {
 		        Thread.sleep(4000);
 		        Common.clickElement("xpath", "//button[@aria-label='Mar 30, 2023']");
 		        Common.clickElement("xpath", "//button[text()='Search Flights']");
-		        Sync.waitPageLoad();
-		        Thread.sleep(5000);
+		        Sync.waitPageLoad(30);
+		        Sync.waitImplicit(40);
+		        Thread.sleep(12000);
 		        String page=Common.findElement("xpath", "//h3").getText();
+		        System.out.println(page);
 				Common.assertionCheckwithReport(
-						page.contains("Showing best flights"),
+						page.contains("FILTER"),
 						"To validate the navigation to the flight page ",
 						"After clicking on the submit button it should navigate to the flight detailed page",
 						"Sucessfully navigated to the flight detailed page after clicking on the serach button",
@@ -1017,14 +1019,23 @@ public class FlyPegionHelper {
 						"Failed to select the filter");
 			   Sync.waitElementPresent("xpath", " //input[@value='Indigo']");
 			   Common.clickElement("xpath", " //input[@value='Indigo']");
+			   String airline=Common.findElement("xpath", "//div[@class='FlightResults_flightPrimaryText__BqFGr']//p").getText();
+			   String selectairline=Common.findElement("xpath", " //input[@value='Indigo']").getAttribute("vlaue");
+			   Common.scrollIntoView("xpath", "//div[@class='FlightResults_flightPrimaryText__BqFGr']//p");
+			   Common.assertionCheckwithReport(
+					   selectairline.contains("Indigo"),
+						"To validate the alirline filters selection ",
+						"After clicking on the filter particualr aitrlines should be displayed",
+						"Sucessfully "+ airline + " is list has been displayed after clicking on the "+ selectairline,
+						"Failed to select the "+ airline + " filter");
 			}
 			catch(Exception | Error e)
 			{
 				e.printStackTrace();
-				ExtenantReportUtils.addFailedLog("To validate the stops filter ",
-						"After clicking on the stops filter filter should be selected",
-						"Unable to select the filter",
-						Common.getscreenShotPathforReport("Failed to select the filter"));
+				ExtenantReportUtils.addFailedLog("To validate the airlines filter ",
+						"After clicking the airlines filter particular airlines should be dispalyed",
+						"Unable to dispaly the airlines filters",
+						Common.getscreenShotPathforReport("Failed to click on the airlines filters"));
 
 				Assert.fail();
 			}

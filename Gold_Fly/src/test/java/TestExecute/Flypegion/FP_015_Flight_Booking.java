@@ -28,7 +28,7 @@ public class FP_015_Flight_Booking {
 
 	@AfterTest
 	public void clearBrowser() {
-//		Common.closeAll();
+		Common.closeAll();
 
 	}
 
