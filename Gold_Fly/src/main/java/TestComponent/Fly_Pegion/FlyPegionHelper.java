@@ -1284,7 +1284,7 @@ public class FlyPegionHelper {
 			}
 
 			public void bus_filters() {
-				// TODO Auto-generated method stub
+				
 				try
 				{
 				   Sync.waitElementPresent("xpath", "//input[@value='AC']");
@@ -1294,32 +1294,33 @@ public class FlyPegionHelper {
 				   Common.clickElement("xpath", "(//small[contains(text(),'Before')])[2]");
 				  
 				   Common.clickElement("xpath", "//small[contains(text(),'operators')]");
-				 Thread.sleep(2000);
+				  Common.scrollIntoView("xpath", "//p[contains(text(),'Bus Type')]");
+				 Thread.sleep(3000);
 				   String bustype=Common.findElement("xpath", "//p[contains(text(),'Bus Type')]").getText();
-				   Common.assertionCheckwithReport(
-						   bustype.contains("Bus Type"),
+				   System.out.println(bustype);
+				   Common.assertionCheckwithReport(Common.getPageTitle().contains("FlyPigeon") && 
+						   bustype.contains("BUS TYPE"),
 							"To validate the Bus Type filter ",
 							"After clicking on the Bus Type filter the filter should be selected",
 							"Sucessfully Bus Type  filter has been seleted ",
 							"Failed to select the Bus Type filter");
 				   
 				   Sync.waitElementPresent("xpath", " //small[contains(text(),'boarding points')]");
-				   Common.scrollIntoView("xpath", "//small[contains(text(),'boarding points')]");
-				   Common.mouseOverClick("xpath", "//small[contains(text(),'boarding points')]");
-				   Common.mouseOverClick("xpath", "//small[contains(text(),'dropping points')]");
+
+				   Common.clickElement("xpath", "//small[contains(text(),'boarding points')]");
+				   Common.clickElement("xpath", "//small[contains(text(),'dropping points')]");
 				   String boarding=Common.findElement("xpath", "//p[contains(text(),'Boarding Point')]").getText();
-				   
+				   System.out.println(boarding);
 				   Thread.sleep(4000);
-				   Common.assertionCheckwithReport(
-						   boarding.contains("Boarding Point"),
+				   Common.assertionCheckwithReport(Common.getPageTitle().contains("FlyPigeon")&&
+						   boarding.contains("BOARDING POINT"),
 							"To validate the Bus Point filters selection ",
 							" Should display the Bus Point filters in the filters section",
 							"Sucessfully Bus Point filters has been displayed in the filters section",
 							"Failed to display the Bus Point filters");
 				}
-				
-				Common.clickElement("xpath", "//button[contains(text(),'Clear All')]");
-				catch(Exception | Error e)
+			
+			catch(Exception |Error e)
 				{
 					e.printStackTrace();
 					ExtenantReportUtils.addFailedLog("To validate the filters ",
@@ -1329,7 +1330,7 @@ public class FlyPegionHelper {
 
 					Assert.fail();
 				}
-				
+				Common.clickElement("xpath", "//button[contains(text(),'Clear All')]");
 			}
 			
 }
