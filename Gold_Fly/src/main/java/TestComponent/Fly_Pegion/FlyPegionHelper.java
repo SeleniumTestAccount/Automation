@@ -1084,6 +1084,8 @@ public class FlyPegionHelper {
 			
 			try
 			{
+				Sync.waitPageLoad();
+				Thread.sleep(3000);
 			   Sync.waitElementPresent("xpath", "(//button[text()='SELECT SEAT'])[1]");
 			   Common.clickElement("xpath", "(//button[text()='SELECT SEAT'])[1]");
 			   
@@ -1091,6 +1093,8 @@ public class FlyPegionHelper {
 			   Common.clickElement("xpath", "//input[@name='boardingPoint' and contains(@value,'Ashok Nagar (BHEL)')]");
 			   
 			   Common.clickElement("xpath", "//input[@name='droppingPoint' and contains(@value,'Vijayawada')]");
+			   Thread.sleep(2000);
+			   Sync.waitElementPresent("xpath", "(//div[contains(@class,'BusSeat_seat__7XmpE BusSeat_availableSeat_')]/small)[3]");
 			   Common.clickElement("xpath", "(//div[contains(@class,'BusSeat_seat__7XmpE BusSeat_availableSeat_')]/small)[3]");
 			   
 			   String seats=Common.findElement("xpath", "//p[contains(text(),'Select Seats')]").getText();
@@ -1134,7 +1138,8 @@ public class FlyPegionHelper {
 			{
 				Sync.waitElementPresent("xpath", " //button[text()='Continue']");
 				   Common.clickElement("xpath", " //button[text()='Continue']");
-				
+				   Sync.waitPageLoad();
+					Thread.sleep(3000);
 			   String passenger=Common.findElement("xpath", "//p[text()='Traveller Details']").getText();
 			   Common.assertionCheckwithReport(
 					   passenger.contains("Traveller Details"),
@@ -1149,7 +1154,7 @@ public class FlyPegionHelper {
 			   Common.textBoxInput("xpath", "//input[@placeholder='First Name']",data.get(Dataset).get("FirstName"));
 			   Common.textBoxInput("xpath", "//input[@placeholder='Last Name']",data.get(Dataset).get("LastName"));
 			   Common.textBoxInput("xpath", "//input[@placeholder='Age']",data.get(Dataset).get("Age"));
-			   Common.dropdown("xpath", "//select[@name='gender']", SelectBy.VALUE, data.get(Dataset).get("Gender"));
+			   Common.dropdown("xpath", "//select[@name='gender']", SelectBy.TEXT, data.get(Dataset).get("Gender"));
 			   Sync.waitPageLoad();
 			   Thread.sleep(3000);
 			   String PassengerDetails=Common.findElement("xpath", "//a[text()='Passenger Details']").getText();
@@ -1179,6 +1184,8 @@ public class FlyPegionHelper {
 					Sync.waitElementPresent("xpath", " //button[text()='Continue']");
 					   Common.clickElement("xpath", " //button[text()='Continue']");
 					Sync.waitPageLoad(3000);
+					
+					Thread.sleep(3000);
 					String payment = Common.findElement("xpath", "//a[text()='Payment']").getText();
 					String proceed = Common.findElement("xpath", "//button[text()='Proceed']").getText();
 					System.out.println(payment);
@@ -1197,6 +1204,86 @@ public class FlyPegionHelper {
 							"It should navigate to the Payment page",
 							"Unable to navigate the user to the Payment page",
 							Common.getscreenShotPathforReport("Failed and not navigated to the Payment page "));
+
+					Assert.fail();
+				}
+			}
+			
+			public void account_update(String Dataset) {
+				try {
+					Sync.waitPageLoad(2000);
+					Sync.waitElementPresent("xpath","//div[contains(@class,'MuiListItemText-root')]//span[text()='Account']");
+					Common.clickElement("xpath","//div[contains(@class,'MuiListItemText-root')]//span[text()='Account']");
+					//div[contains(@class,'MuiListItemText-root')]//span[text()='Profile']
+					Sync.waitPageLoad(3000);
+					Thread.sleep(3000);
+					String ProfileBtn = Common.findElement("xpath", "//button[text()='Update Profile']").getText();
+					String Profile = Common.findElement("xpath", "//h1[text()='Update Profile']").getText();
+					System.out.println(ProfileBtn);
+					System.out.println(Profile);
+					Common.assertionCheckwithReport(
+							Common.getPageTitle().contains("FlyPigeon") && ProfileBtn.contains("Update Profile")&& Profile.equals("Update Profile"),
+							"To validate the user lands on Update Profile page after successfull login",
+							"After clicking on the Account Profile button it should navigate to the Update Profile page",
+							"user Sucessfully navigates to the Update Profile page after clicking on the Account Profile ",
+							"Failed to click Account and not navigated to the Update Profile page ");
+					
+					Sync.waitElementPresent("xpath", "//input[@name='person_firstname']");
+					
+					WebElement Select_all = Common.findElement("xpath", "//input[@name='person_firstname']");
+					Select_all.sendKeys(Keys.CONTROL + "a");
+					Common.findElement("xpath", "//input[@name='person_firstname']").sendKeys(data.get(Dataset).get("FirstName"));
+					
+					WebElement Select_all1 = Common.findElement("xpath", "//input[@name='person_lastname']");
+					Select_all1.sendKeys(Keys.CONTROL + "a");
+					Common.findElement("xpath", "//input[@name='person_lastname']").sendKeys(data.get(Dataset).get("LastName"));
+					
+					WebElement Select_all2 = Common.findElement("xpath", "//input[@name='contact_Designation']");
+					Select_all2.sendKeys(Keys.CONTROL + "a");
+					Common.findElement("xpath", "//input[@name='contact_Designation']").sendKeys(data.get(Dataset).get("Designation"));
+					
+					WebElement Select_all3 = Common.findElement("xpath", "//input[@name='business_address']");
+					Select_all3.sendKeys(Keys.CONTROL + "a");
+					Common.findElement("xpath", "//input[@name='business_address']").sendKeys(data.get(Dataset).get("Address"));
+					
+					WebElement Select_all4 = Common.findElement("xpath", "//input[@name='business_city']");
+					Select_all4.sendKeys(Keys.CONTROL + "a");
+					Common.findElement("xpath", "//input[@name='business_city']").sendKeys(data.get(Dataset).get("City"));
+					
+//					Common.textBoxInput("xpath", "//input[@name='person_firstname']", data.get(Dataset).get("FirstName"));
+//					Common.textBoxInput("xpath", "//input[@name='person_lastname']", data.get(Dataset).get("LastName"));
+//					Common.textBoxInput("xpath", "//input[@name='contact_Designation']", data.get(Dataset).get("Designation"));
+//					Common.textBoxInput("xpath", "//input[@name='business_address']", data.get(Dataset).get("Address"));
+//					Common.textBoxInput("xpath", "//input[@name='business_city']", data.get(Dataset).get("City"));
+					
+					Common.dropdown("xpath", "//select[@name='business_state']", SelectBy.TEXT, data.get(Dataset).get("State"));
+					
+					WebElement Select_all5 = Common.findElement("xpath", "//input[@name='business_pincode']");
+					Select_all5.sendKeys(Keys.CONTROL + "a");
+					Common.findElement("xpath", "//input[@name='business_pincode']").sendKeys(data.get(Dataset).get("Pincode"));
+//					Common.textBoxInput("xpath", "//input[@name='business_pincode']", data.get(Dataset).get("Pincode"));
+					Common.clickElement("xpath", "//button[text()='Update Profile']");
+					Sync.waitPageLoad(3000);
+					Thread.sleep(2000);
+					
+					Sync.waitElementPresent("xpath", "//div[@class='Toastify__toast-body']//p");
+					Common.mouseOver("xpath", "//div[@class='Toastify__toast-body']//p");
+					String alert = Common.findElement("xpath", "//div[@class='Toastify__toast-body']//p").getText();
+					System.out.println(alert);
+//					Profile updated successfully.
+					Common.assertionCheckwithReport(
+							Common.getPageTitle().contains("FlyPigeon") && ProfileBtn.contains("Update Profile")&& alert.contains("Profile updated successfully"),
+							"To validate the user Updates the Account Profile page ",
+							"After clicking on the Update Profile button the Account Profile should be updated",
+							"user Sucessfully updated the Account Profile page after clicking on the Update Profile ",
+							"Failed to click Update Profile and not saved to the Account Profile ");
+				}
+				catch(Exception |Error e) {
+					e.printStackTrace();
+					ExtenantReportUtils.addFailedLog("To validate the user lands on Update Profile page after successfull logins",
+							"After clicking on the Account Profile button it should navigate to the Update Profile page",
+							"Unable to click Account Profile and Profile is not Updated",
+							Common.getscreenShotPathforReport("Failed to click Account Profile and not updated the Profile "));
 
 					Assert.fail();
 				}
