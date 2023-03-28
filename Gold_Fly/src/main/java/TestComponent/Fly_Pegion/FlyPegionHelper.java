@@ -1249,19 +1249,13 @@ public class FlyPegionHelper {
 					WebElement Select_all4 = Common.findElement("xpath", "//input[@name='business_city']");
 					Select_all4.sendKeys(Keys.CONTROL + "a");
 					Common.findElement("xpath", "//input[@name='business_city']").sendKeys(data.get(Dataset).get("City"));
-					
-//					Common.textBoxInput("xpath", "//input[@name='person_firstname']", data.get(Dataset).get("FirstName"));
-//					Common.textBoxInput("xpath", "//input[@name='person_lastname']", data.get(Dataset).get("LastName"));
-//					Common.textBoxInput("xpath", "//input[@name='contact_Designation']", data.get(Dataset).get("Designation"));
-//					Common.textBoxInput("xpath", "//input[@name='business_address']", data.get(Dataset).get("Address"));
-//					Common.textBoxInput("xpath", "//input[@name='business_city']", data.get(Dataset).get("City"));
-					
+			
 					Common.dropdown("xpath", "//select[@name='business_state']", SelectBy.TEXT, data.get(Dataset).get("State"));
 					
 					WebElement Select_all5 = Common.findElement("xpath", "//input[@name='business_pincode']");
 					Select_all5.sendKeys(Keys.CONTROL + "a");
 					Common.findElement("xpath", "//input[@name='business_pincode']").sendKeys(data.get(Dataset).get("Pincode"));
-//					Common.textBoxInput("xpath", "//input[@name='business_pincode']", data.get(Dataset).get("Pincode"));
+
 					Common.clickElement("xpath", "//button[text()='Update Profile']");
 					Sync.waitPageLoad(3000);
 					Thread.sleep(2000);
@@ -1270,7 +1264,7 @@ public class FlyPegionHelper {
 					Common.mouseOver("xpath", "//div[@class='Toastify__toast-body']//p");
 					String alert = Common.findElement("xpath", "//div[@class='Toastify__toast-body']//p").getText();
 					System.out.println(alert);
-//					Profile updated successfully.
+
 					Common.assertionCheckwithReport(
 							Common.getPageTitle().contains("FlyPigeon") && ProfileBtn.contains("Update Profile")&& alert.contains("Profile updated successfully"),
 							"To validate the user Updates the Account Profile page ",
@@ -1289,4 +1283,53 @@ public class FlyPegionHelper {
 				}
 			}
 
+			public void bus_filters() {
+				// TODO Auto-generated method stub
+				try
+				{
+				   Sync.waitElementPresent("xpath", "//input[@value='AC']");
+				   Common.clickElement("xpath", "//input[@value='AC']");
+				   Sync.waitElementPresent("xpath", "(//small[contains(text(),'After')])[1]");
+				   Common.clickElement("xpath", "(//small[contains(text(),'After')])[1]");
+				   Common.clickElement("xpath", "(//small[contains(text(),'Before')])[2]");
+				  
+				   Common.clickElement("xpath", "//small[contains(text(),'operators')]");
+				 Thread.sleep(2000);
+				   String bustype=Common.findElement("xpath", "//p[contains(text(),'Bus Type')]").getText();
+				   Common.assertionCheckwithReport(
+						   bustype.contains("Bus Type"),
+							"To validate the Bus Type filter ",
+							"After clicking on the Bus Type filter the filter should be selected",
+							"Sucessfully Bus Type  filter has been seleted ",
+							"Failed to select the Bus Type filter");
+				   
+				   Sync.waitElementPresent("xpath", " //small[contains(text(),'boarding points')]");
+				   Common.scrollIntoView("xpath", "//small[contains(text(),'boarding points')]");
+				   Common.mouseOverClick("xpath", "//small[contains(text(),'boarding points')]");
+				   Common.mouseOverClick("xpath", "//small[contains(text(),'dropping points')]");
+				   String boarding=Common.findElement("xpath", "//p[contains(text(),'Boarding Point')]").getText();
+				   
+				   Thread.sleep(4000);
+				   Common.assertionCheckwithReport(
+						   boarding.contains("Boarding Point"),
+							"To validate the Bus Point filters selection ",
+							" Should display the Bus Point filters in the filters section",
+							"Sucessfully Bus Point filters has been displayed in the filters section",
+							"Failed to display the Bus Point filters");
+				}
+				
+				Common.clickElement("xpath", "//button[contains(text(),'Clear All')]");
+				catch(Exception | Error e)
+				{
+					e.printStackTrace();
+					ExtenantReportUtils.addFailedLog("To validate the filters ",
+							"After clicking the filter selected filters should be dispalyed",
+							"Unable to dispaly the filters after selection",
+							Common.getscreenShotPathforReport("Failed to click on the filters"));
+
+					Assert.fail();
+				}
+				
+			}
+			
 }
