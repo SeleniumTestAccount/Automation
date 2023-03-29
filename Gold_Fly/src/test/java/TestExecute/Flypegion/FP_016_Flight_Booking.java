@@ -7,7 +7,7 @@ import TestComponent.Fly_Pegion.FlyPegionHelper;
 import TestLib.Common;
 import TestLib.Login;
 
-public class FP_015_Flight_Booking {
+public class FP_016_Flight_Booking {
 
 	String datafile = "FlyPegion//FlyPegionTestData.xlsx";
 	FlyPegionHelper FlyPegion = new FlyPegionHelper(datafile, "Airlines");
@@ -20,6 +20,8 @@ public class FP_015_Flight_Booking {
 			FlyPegion.login_Details("Account");
 			FlyPegion.Flight_Booking("one way");
 			FlyPegion.air_filters("AirFilters");
+			FlyPegion.flight_Itinerary();
+			FlyPegion.flight_PassengerDetails("Details");
 
 		} catch (Exception e) {
 
@@ -28,7 +30,7 @@ public class FP_015_Flight_Booking {
 
 	@AfterTest
 	public void clearBrowser() {
-		Common.closeAll();
+//		Common.closeAll();
 
 	}
 

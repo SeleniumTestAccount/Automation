@@ -1022,14 +1022,13 @@ public class FlyPegionHelper {
 						"Failed to select the filter");
 			   Sync.waitElementPresent("xpath", " //input[@value='Indigo']");
 			   Common.clickElement("xpath", " //input[@value='Indigo']");
+			   Common.actionsKeyPress(Keys.HOME);
 			   String airline=Common.findElement("xpath", "//div[@class='FlightResults_flightPrimaryText__BqFGr']//p").getText();
-			   String selectairline=Common.findElement("xpath", " //input[@value='Indigo']").getAttribute("vlaue");
-			   Common.scrollIntoView("xpath", "//div[@class='FlightResults_flightPrimaryText__BqFGr']//p");
 			   Common.assertionCheckwithReport(
-					   selectairline.contains("Indigo"),
+					   airline.contains("Indigo"),
 						"To validate the alirline filters selection ",
 						"After clicking on the filter particualr aitrlines should be displayed",
-						"Sucessfully "+ airline + " is list has been displayed after clicking on the "+ selectairline,
+						"Sucessfully "+ airline + " is list has been displayed after clicking on the "+ airline,
 						"Failed to select the "+ airline + " filter");
 			}
 			catch(Exception | Error e)
@@ -1331,6 +1330,97 @@ public class FlyPegionHelper {
 					Assert.fail();
 				}
 				Common.clickElement("xpath", "//button[contains(text(),'Clear All')]");
+			}
+
+			public void flight_Itinerary() {
+				// TODO Auto-generated method stub
+				try
+				{
+			    String flightnumber=Common.findElement("xpath", "(//div[@class='FlightResults_flightPrimaryText__BqFGr']//p//span)[2]").getText();
+			    System.out.println(flightnumber);
+				Sync.waitElementPresent("xpath", "//button[text()='Book Now']");	
+				Common.clickElement("xpath", "//button[text()='Book Now']");
+				Sync.waitImplicit(40);
+				Thread.sleep(7000);
+				String iternary=Common.findElement("xpath", "//div[contains(@class,'ItineraryReview_segmentAi')]//span").getText();
+				System.out.println(iternary);
+				Common.assertionCheckwithReport(flightnumber.contains("461")||
+						iternary.contains("461"),
+							"To validate the navigation to the flight Itinerary Review page",
+							" It should be navigate to the flight Itinerary Review page",
+							"Sucessfully Navigated to the flight Itinerary Review page",
+							"Failed to Navigate to the Itinerary Review page");
+				Common.clickElement("xpath", "//div[contains(@class,'ItineraryR')]//input");
+				String insurance=Common.findElement("xpath", "(//div[text()='Insurance']//parent::div//div)[2]").getText();
+				Common.assertionCheckwithReport(insurance.contains("Rs.199"),
+							"To validate the insurance in the order summary ",
+							" insurance should be added to the order summary page",
+							"Sucessfully insurance has been dispalyed in thr order summary page",
+							"Failed to see the insurance in the order summary page");
+				Common.clickElement("xpath", "//button[text()='Proceed']");
+				String Passenger=Common.findElement("xpath", "//div[contains(@class,'MuiGrid-root MuiGrid')]//span[text()='2']").getText();
+				Common.assertionCheckwithReport(flightnumber.contains("461")||
+						Passenger.contains("PassengerDetails"),
+							"To validate the navigation to the PassengerDetails page",
+							" It should be navigate to the flight PassengerDetails page",
+							"Sucessfully Navigated to the flight PassengerDetails page",
+							"Failed to Navigate to the PassengerDetails page");
+				
+				}
+				catch(Exception | Error e)
+				{
+					e.printStackTrace();
+					ExtenantReportUtils.addFailedLog("To validate the navigation to the PassengerDetails page",
+							" It should be navigate to the flight PassengerDetails page",
+							"Unable to Navigate to the PassengerDetails page",
+							Common.getscreenShotPathforReport("Failed to Navigate to the PassengerDetails page"));
+					Assert.fail();
+				}
+				
+			}
+
+			public void flight_PassengerDetails(String Dataset) {
+				// TODO Auto-generated method stub
+				try
+				{
+					Sync.waitElementPresent("xpath", "//input[@name='mobile']");	
+					Common.textBoxInput("xpath", "//input[@name='mobile']", data.get(Dataset).get("Phone"));
+					Sync.waitElementPresent("xpath", "//input[@name='email']");	
+					Common.textBoxInput("xpath", "//input[@name='email']", data.get(Dataset).get("Email"));
+					Common.dropdown("xpath", "//select[@id='gender']", SelectBy.TEXT, "Mr");
+					Sync.waitElementPresent("xpath", "//input[@name='firstName']");	
+					Common.textBoxInput("xpath", "//input[@name='firstName']", data.get(Dataset).get("Firstname"));
+					Sync.waitElementPresent("xpath", "//input[@name='lastName']");	
+					Common.textBoxInput("xpath", "//input[@name='lastName']", data.get(Dataset).get("lastname"));
+					Common.clickElement("xpath", "//span[text()='Add Baggage']");
+					Common.clickElement("xpath", "(//button[contains(@class,'PassengerDetails_SSRItemBtn__8vqot')]//p//span)[2]");
+					String addons=Common.findElement("xpath", "(//button[contains(@class,'PassengerDetails_SSRItemBtn__8vqot')]//p//span)[2]").getText();
+					String ordersummary=Common.findElement("xpath", "(//div[@style='margin-bottom: 1rem;']//div)[3]").getText();
+					Common.assertionCheckwithReport(addons.equals(ordersummary),
+								"To validate the addons in the order summary",
+								" Addons should be added to the order summary",
+								"Sucessfully Addons has been added to the order summary",
+								"Failed to display the addons on the order summary");
+					Common.clickElement("xpath", "//button[text()='Proceed']");
+					String SelectSeats=Common.findElement("xpath", "//div[contains(@class,'MuiGrid-root MuiGrid')]//span[text()='3']").getText();
+					System.out.println(SelectSeats);
+					Common.assertionCheckwithReport(SelectSeats.contains("SelectSeats"),
+								"To validate the navigation to the SelectSeats page",
+								" It should be navigate to the flight SelectSeats page",
+								"Sucessfully Navigated to the flight SelectSeats page",
+								"Failed to Navigate to the SelectSeats page");
+					
+					
+				}
+				catch(Exception | Error e)
+				{
+					e.printStackTrace();
+					ExtenantReportUtils.addFailedLog("To validate the navigation to the SelectSeats page",
+							" It should be navigate to the flight SelectSeats page",
+							"Unable to Navigate to the SelectSeats page",
+							Common.getscreenShotPathforReport("Failed to Navigate to the SelectSeats page"));
+					Assert.fail();
+				}
 			}
 			
 }
