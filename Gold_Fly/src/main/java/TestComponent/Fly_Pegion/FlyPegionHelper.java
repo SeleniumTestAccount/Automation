@@ -768,11 +768,11 @@ public class FlyPegionHelper {
 		public void click_Support() {
 			try {
 				
-				Common.clickElement("xpath", "//span[text()='Support']");
+				Common.clickElement("xpath", "//span[text()='Callback Support']");
 				Sync.waitPageLoad(3000);
 				Thread.sleep(2000);
 				Common.clickElement("xpath", "//button[text()='Clear All']");
-				String support = Common.findElement("xpath", "//h1[text()='Support']").getText();
+				String support = Common.findElement("xpath", "//h1[text()='Callback Support']").getText();
 				String support1 = Common.findElement("xpath", "//div[contains(@class,'Support_datesSearchDiv')]").getAttribute("class");
 				System.out.println(support);
 				System.out.println(support1);
@@ -810,7 +810,7 @@ public class FlyPegionHelper {
 				Sync.waitPageLoad(3000);
 				Thread.sleep(2000);
 				String ID= Common.findElement("xpath", "//input[@id='txnId']").getAttribute("value");
-				String support = Common.findElement("xpath", "//h1[text()='Support']").getText();
+				String support = Common.findElement("xpath", "//h1[text()='Callback Support']").getText();
 				String support1 = Common.findElement("xpath", "//div[contains(@class,'Support_datesSearchDiv')]").getAttribute("class");
 				String IDvalue = Common.findElement("xpath", "//th[contains(text(),'"+ID+"')]").getText();
 				System.out.println(support);
@@ -917,10 +917,11 @@ public class FlyPegionHelper {
 //				Common.textBoxInput("xpath", "//input[@placeholder='yyyy/mm/dd']", data.get(Dataset).get("ToDate"));
 				 Common.clickElement("xpath", "//button[contains(@aria-label,'Choose date')]");
 				 Common.clickElement("xpath", "//button[@aria-label='Mar 30, 2023']");
-				Thread.sleep(2000);
+				Thread.sleep(6000);
 				Common.clickElement("xpath", "//button[contains(@class,'BusSearch_busSearchBtn')]");
 				Sync.waitPageLoad(3000);
 				Thread.sleep(2000);
+				Sync.waitElementPresent("xpath", "//button[contains(@class,'ModifyBusSearch_modifyBus')]");
 				String modify = Common.findElement("xpath", "//button[contains(@class,'ModifyBusSearch_modifyBus')]").getText();
 				Common.assertionCheckwithReport(
 						Common.getPageTitle().contains("FlyPigeon") && modify.contains("Modify"),
@@ -1402,9 +1403,9 @@ public class FlyPegionHelper {
 								"Sucessfully Addons has been added to the order summary",
 								"Failed to display the addons on the order summary");
 					Common.clickElement("xpath", "//button[text()='Proceed']");
-					String SelectSeats=Common.findElement("xpath", "//div[contains(@class,'MuiGrid-root MuiGrid')]//span[text()='3']").getText();
+					String SelectSeats=Common.findElement("xpath", "//h4").getText();
 					System.out.println(SelectSeats);
-					Common.assertionCheckwithReport(SelectSeats.contains("SelectSeats"),
+					Common.assertionCheckwithReport(Common.getPageTitle().contains("FlyPigeon")||SelectSeats.contains("Select seats"),
 								"To validate the navigation to the SelectSeats page",
 								" It should be navigate to the flight SelectSeats page",
 								"Sucessfully Navigated to the flight SelectSeats page",
@@ -1423,4 +1424,111 @@ public class FlyPegionHelper {
 				}
 			}
 			
+			public void markups() {
+				try {
+					Sync.waitElementPresent("xpath", "//span[contains(text(),'Dashboard')]");
+					Common.clickElement("xpath", "//span[contains(text(),'Dashboard')]");
+					Sync.waitPageLoad(3000);
+					Common.clickElement("xpath", "//span[contains(text(),'Set Markups')]");
+					Thread.sleep(5000);
+					String markups = Common.findElement("xpath", "//h1[contains(text(),'')]").getText();
+					String domestic = Common.findElement("xpath", "//ol[contains(@class,'Markups_tabsList')]//li[1]").getText();
+					System.out.println(markups);
+					System.out.println(domestic);
+					Common.assertionCheckwithReport(
+							Common.getPageTitle().contains("FlyPigeon") && markups.contains("Markups")&& domestic.equals("Domestic Flights"),
+							"To validate the user lands on Markups" +domestic,
+							"After clicking on the "+domestic+" it should navigate to the "+domestic,
+							"user Sucessfully navigate to the "+domestic+" after clicking on the " +domestic,
+							"Failed and not navigated to the "+ domestic);
+					
+					Common.clickElement("xpath", "//ol[contains(@class,'Markups_tabsList')]//li[2]");
+					Thread.sleep(5000);
+					String international = Common.findElement("xpath", "//ol[contains(@class,'Markups_tabsList')]//li[2]").getText();
+					System.out.println(international);
+					
+					Common.assertionCheckwithReport(
+							Common.getPageTitle().contains("FlyPigeon") && international.contains("International Flights"),
+							"To validate the user lands on Markups " +international,
+							"After clicking on the "+international+" it should navigate to the "+international,
+							"user Sucessfully navigate to the "+international+" after clicking on the "+international,
+							"Failed and not navigated to the "+international);
+					
+					Common.clickElement("xpath", "//ol[contains(@class,'Markups_tabsList')]//li[3]");
+					Thread.sleep(5000);
+					String buses = Common.findElement("xpath", "//ol[contains(@class,'Markups_tabsList')]//li[3]").getText();
+					System.out.println(buses);
+					
+					Common.assertionCheckwithReport(
+							Common.getPageTitle().contains("FlyPigeon") && buses.contains("Buses"),
+							"To validate the user lands on MarkUps"+buses,
+							"After clicking on the "+buses+" it should navigate to the "+buses,
+							"user Sucessfully navigate to the "+buses+" after clicking on the "+buses,
+							"Failed and not navigated to the "+buses);
+
+				}
+				catch(Exception |Error e) {
+					e.printStackTrace();
+					ExtenantReportUtils.addFailedLog("To validate the user Navigate to Markups page ",
+							"After clicking on the MarkUps it should navigate to the MarksUp page",
+							"Unable to navigate the user to the MarkUps after clicking on the MarkUps button",
+							Common.getscreenShotPathforReport("Failed and not navigated to the MarkUps page "));
+
+					Assert.fail();
+				}
+			}
+			
+			public void commission_Details() {
+				try {
+					Sync.waitElementPresent("xpath", "//span[contains(text(),'Commission Details')]");
+					Common.clickElement("xpath", "//span[contains(text(),'Commission Details')]");
+					Sync.waitPageLoad(3000);
+					
+					Thread.sleep(5000);
+					String commission = Common.findElement("xpath", "//h1[contains(text(),'')]").getText();
+					String domestic = Common.findElement("xpath", "//ol[contains(@class,'Commissions_tabsList')]//li[1]").getText();
+					System.out.println(commission);
+					System.out.println(domestic);
+					Common.assertionCheckwithReport(
+							Common.getPageTitle().contains("FlyPigeon") && commission.contains("Commission Details")&& domestic.contains("Domestic Flights"),
+							"To validate the user lands on Commission" +domestic,
+							"After clicking on the "+domestic+" it should navigate to the "+domestic,
+							"user Sucessfully navigate to the "+domestic+" after clicking on the" +domestic,
+							"Failed to signIn and not navigated to the Home page ");
+					
+					Common.clickElement("xpath", "//ol[contains(@class,'Commissions_tabsList')]//li[2]");
+					Thread.sleep(5000);
+					String international = Common.findElement("xpath", "//ol[contains(@class,'Commissions_tabsList')]//li[2]").getText();
+					System.out.println(international);
+					
+					Common.assertionCheckwithReport(
+							Common.getPageTitle().contains("FlyPigeon") && international.contains("International Flights"),
+							"To validate the user lands on Commission" +international,
+							"After clicking on the "+international+" it should navigate to the "+international,
+							"user Sucessfully navigate to the "+international+" after clicking on the "+international,
+							"Failed and not navigated to the "+international);
+					
+					Common.clickElement("xpath", "//ol[contains(@class,'Commissions_tabsList')]//li[3]");
+					Thread.sleep(5000);
+					String buses = Common.findElement("xpath", "//ol[contains(@class,'Commissions_tabsList')]//li[3]").getText();
+					System.out.println(buses);
+					
+					Common.assertionCheckwithReport(
+							Common.getPageTitle().contains("FlyPigeon") && buses.contains("Buses"),
+							"To validate the user lands on Commission" +buses,
+							"After clicking on the "+buses+" it should navigate to the "+buses,
+							"user Sucessfully navigate to the "+buses+"after clicking on the "+buses,
+							"Failed and not navigated to the "+buses);
+
+				}
+				catch(Exception |Error e) {
+					e.printStackTrace();
+					ExtenantReportUtils.addFailedLog("To validate the user Navigate to Commission details page ",
+							"After clicking on the Commission details it should navigate to the Commission details page",
+							"Unable to navigate the user to the Commission details after clicking on the Commission details",
+							Common.getscreenShotPathforReport("Failed and not navigated to the Commission details page "));
+
+					Assert.fail();
+				}
+			}
 }

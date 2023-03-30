@@ -22,6 +22,7 @@ public class FP_016_Flight_Booking {
 			FlyPegion.air_filters("AirFilters");
 			FlyPegion.flight_Itinerary();
 			FlyPegion.flight_PassengerDetails("Details");
+			
 
 		} catch (Exception e) {
 
@@ -30,7 +31,7 @@ public class FP_016_Flight_Booking {
 
 	@AfterTest
 	public void clearBrowser() {
-//		Common.closeAll();
+		Common.closeAll();
 
 	}
 
