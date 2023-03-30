@@ -1531,4 +1531,45 @@ public class FlyPegionHelper {
 					Assert.fail();
 				}
 			}
+			
+			public void Transaction(String Dataset) {
+				// TODO Auto-generated method stub
+				String TrID=data.get(Dataset).get("Transaction ID");
+				try
+				{
+					Sync.waitElementPresent("xpath","//div[contains(@class,'MuiListItemText-root')]//span[text()='Transactions']");
+					Common.clickElement("xpath","//div[contains(@class,'MuiListItemText-root')]//span[text()='Transactions']");
+					Sync.waitElementPresent("xpath", "(//button[@type='button'])[2]");
+					Common.clickElement("xpath", "(//button[@type='button'])[2]");
+					Common.clickElement("xpath", "//button[@aria-label='Mar 1, 2023']");
+					Sync.waitElementPresent("xpath", "//input[@id='txnId']");
+					Common.textBoxInput("xpath", "//input[@id='txnId']", TrID);
+					Common.clickElement("xpath", "//div[@id='demo-simple-select']");
+					Common.clickElement("xpath", "//li[@data-value='BUS']");
+					Common.clickElement("xpath", "//div[@id='txn-type-demo-simple-select']");
+					Common.clickElement("xpath", "//li[@data-value='DEBIT']");
+					Common.clickElement("xpath", "//div[@id='status-type-demo-simple-select']");
+					Common.clickElement("xpath", "//li[@data-value='success']");
+					Common.clickElement("xpath", "//button[text()='Search']");
+					Thread.sleep(4000);
+					String Transactionid=Common.findElement("xpath", "//th[contains(@class,'MuiTableCell-root MuiTableCell-bo')][3]//p").getText();
+					Common.assertionCheckwithReport(Transactionid.contains(TrID),
+							"To validate the transaction id in search results",
+							" After clicking on the search button transaction id should display",
+							"Sucessfully Transaction Id has been displayed",
+							"Failed to Display the transaction id");
+					
+					
+				}
+				catch(Exception | Error e)
+				{
+					e.printStackTrace();
+					ExtenantReportUtils.addFailedLog("To validate the transaction id in search results",
+							" After clicking on the search button transaction id should display",
+							"Unable to Display the transaction id",
+							Common.getscreenShotPathforReport("Failed to Display the transaction id"));
+					Assert.fail();
+				}
+				
+			}
 }
