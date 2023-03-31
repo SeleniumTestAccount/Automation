@@ -7,18 +7,18 @@ import TestComponent.Fly_Pegion.FlyPegionHelper;
 import TestLib.Common;
 import TestLib.Login;
 
-public class FP_021_Transactions {
+public class FP_019_Bus_Booking_List {
 
 	String datafile = "FlyPegion//FlyPegionTestData.xlsx";
 	FlyPegionHelper FlyPegion = new FlyPegionHelper(datafile, "Transactions");
 
 	@Test(retryAnalyzer = Utilities.RetryAnalyzer.class)
-	public void Verify_Flight_Booking_Functionality() {
+	public void Verify_Bus_Booking_List_Functionality() {
 		try {
 			FlyPegion.verifyHomePage();
 			FlyPegion.click_Login();
 			FlyPegion.login_Details("Account");
-			FlyPegion.Transaction("Transaction");
+			
 			
 		} catch (Exception e) {
 
@@ -27,7 +27,7 @@ public class FP_021_Transactions {
 
 	@AfterTest
 	public void clearBrowser() {
-		Common.closeAll();
+//		Common.closeAll();
 
 	}
 

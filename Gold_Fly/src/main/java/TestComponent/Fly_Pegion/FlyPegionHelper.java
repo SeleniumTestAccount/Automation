@@ -916,7 +916,7 @@ public class FlyPegionHelper {
 				
 //				Common.textBoxInput("xpath", "//input[@placeholder='yyyy/mm/dd']", data.get(Dataset).get("ToDate"));
 				 Common.clickElement("xpath", "//button[contains(@aria-label,'Choose date')]");
-				 Common.clickElement("xpath", "//button[@aria-label='Mar 30, 2023']");
+				 Common.clickElement("xpath", "//button[@aria-label='Mar 31, 2023']");
 				Thread.sleep(6000);
 				Common.clickElement("xpath", "//button[contains(@class,'BusSearch_busSearchBtn')]");
 				Sync.waitPageLoad(3000);
@@ -980,7 +980,7 @@ public class FlyPegionHelper {
 		        Sync.waitElementPresent("xpath", "//fieldset[@aria-hidden='true']");
 		        Common.clickElement("xpath", "//input[contains(@class,'MuiOutlinedInput-input MuiInputBase-input MuiIn')]");
 		        Thread.sleep(4000);
-		        Common.clickElement("xpath", "//button[@aria-label='Mar 30, 2023']");
+		        Common.clickElement("xpath", "//button[@aria-label='Mar 31, 2023']");
 		        Common.clickElement("xpath", "//button[text()='Search Flights']");
 		        Sync.waitPageLoad(30);
 		        Sync.waitImplicit(40);
@@ -1054,7 +1054,7 @@ public class FlyPegionHelper {
 				int top = Common.findElements("xpath", "//div[contains(@class,'BusSearch_topBusRouteDivOne')]/p").size();
 				
 				Sync.waitPageLoad();
-				for(int i=1;i<top-17;i++) {
+				for(int i=1;i<top-15;i++) {
 					System.out.println(i);
 //					List<WebElement> to = Common.findElements("xpath", "//div[contains(@class,'BusSearch_topBusRouteDivOne')]/p");
 //					System.out.println(to);
@@ -1537,6 +1537,8 @@ public class FlyPegionHelper {
 				String TrID=data.get(Dataset).get("Transaction ID");
 				try
 				{
+					Sync.waitElementPresent("xpath", "//span[contains(text(),'Dashboard')]");
+					Common.clickElement("xpath", "//span[contains(text(),'Dashboard')]");
 					Sync.waitElementPresent("xpath","//div[contains(@class,'MuiListItemText-root')]//span[text()='Transactions']");
 					Common.clickElement("xpath","//div[contains(@class,'MuiListItemText-root')]//span[text()='Transactions']");
 					Sync.waitElementPresent("xpath", "(//button[@type='button'])[2]");
