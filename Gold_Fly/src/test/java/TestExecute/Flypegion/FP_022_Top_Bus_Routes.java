@@ -27,7 +27,7 @@ public class FP_022_Top_Bus_Routes {
 
 	@AfterTest
 	public void clearBrowser() {
-//		Common.closeAll();
+		Common.closeAll();
 
 	}
 

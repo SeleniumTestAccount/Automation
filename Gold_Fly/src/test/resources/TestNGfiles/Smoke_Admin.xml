@@ -82,7 +82,7 @@
 			<class name="TestExecute.Flypegion.FP_015_Account_Profile_Update" />
 		</classes>
 	</test>
-		 <test name="Test_FP_016_Flight_Booking" testid="FP-016" priority="P1" description="This script will cover validating Flight search, Flight Filters, updating details, Payment Page">
+		  <test name="Test_FP_016_Flight_Booking" testid="FP-016" priority="P1" description="This script will cover validating Flight search, Flight Filters, updating details, Payment Page">
 		<classes>
 			<class name="TestExecute.Flypegion.FP_016_Flight_Booking" />
 		</classes>
@@ -92,5 +92,16 @@
 			<class name="TestExecute.Flypegion.FP_017_MarkUps_Commission" />
 		</classes>
 	</test>  
+	
+	 <test name="Test_FP_021_Transactions" testid="FP-021" priority="P1" description="This script will cover validating Transactions ">
+		<classes>
+			<class name="TestExecute.Flypegion.FP_021_Transactions" />
+		</classes>
+	</test> 
+	 <test name="Test_FP_022_Top_Bus_Routes" testid="FP-022" priority="P1" description="This script will cover validating Top Bus Routes ">
+		<classes>
+			<class name="TestExecute.Flypegion.FP_022_Top_Bus_Routes" />
+		</classes>
+	</test> 
         </suite>  
         
