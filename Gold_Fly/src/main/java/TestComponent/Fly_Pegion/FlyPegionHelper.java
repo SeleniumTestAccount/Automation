@@ -1058,7 +1058,7 @@ public class FlyPegionHelper {
 					System.out.println(i);
 //					List<WebElement> to = Common.findElements("xpath", "//div[contains(@class,'BusSearch_topBusRouteDivOne')]/p");
 //					System.out.println(to);
-					String to= Common.getText("xpath", "(//div[contains(@class,'BusSearch_topBusRouteDivOne')]/p)["+i+"]");
+					String to= Common.getText("xpath", "(//div[contains(@class,'BusSearch_topBusRouteDivOne')]/p)["+i+"]").replace("●", "");
 					System.out.println(to);
 					Common.clickElement("xpath", "(//div[contains(@class,'BusSearch_topBusRouteDivOne')]/p)["+i+"]");
 					Thread.sleep(3000);
