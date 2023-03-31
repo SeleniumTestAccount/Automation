@@ -1574,4 +1574,58 @@ public class FlyPegionHelper {
 				}
 				
 			}
+			
+			public void Air_Booking_List(String Dataset) {
+				// TODO Auto-generated method stub
+				String tranid=data.get(Dataset).get("Transaction ID");
+				try
+				{
+					Sync.waitElementPresent("xpath", "//span[contains(text(),'Booking List')]");
+					Common.clickElement("xpath", "//span[contains(text(),'Booking List')]");
+					Sync.waitElementPresent("xpath","//div[contains(@class,'MuiListItemText-root')]//span[text()='Air Booking List']");
+					Common.clickElement("xpath","//div[contains(@class,'MuiListItemText-root')]//span[text()='Air Booking List']");
+					Sync.waitElementPresent("xpath", "(//button[@type='button'])[2]");
+					Common.clickElement("xpath", "(//button[@type='button'])[2]");
+					Common.clickElement("xpath", "//button[@aria-label='Mar 16, 2023']");
+					Common.clickElement("xpath", "//input[@id='bookinngId']");
+					Common.textBoxInput("xpath", "//input[@id='bookinngId']", tranid);
+					Common.clickElement("xpath", "//button[text()='Search']");
+					Thread.sleep(4000);
+					String TranscationNumber=Common.findElement("xpath","(//th[@scope='row']//a)[1]").getText();
+					Common.assertionCheckwithReport(TranscationNumber.contains(TranscationNumber),
+							"To validate the transaction id in search results",
+							" After clicking on the search button transaction id should display",
+							"Sucessfully Transaction Id has been displayed",
+							"Failed to Display the transaction id");
+					
+				}
+				catch(Exception | Error e)
+				{
+					e.printStackTrace();
+					ExtenantReportUtils.addFailedLog("To validate the transaction id in search results",
+							" After clicking on the search button transaction id should display",
+							"Unable to Display the transaction id",
+							Common.getscreenShotPathforReport("Failed to Display the transaction id"));
+					Assert.fail();
+				}
+				
+			}
+
+			public void Bus_Booking_List(String Dataset) {
+				// TODO Auto-generated method stub
+				try
+				{
+					Sync.waitElementPresent("xpath", "//span[contains(text(),'Booking List')]");
+					Common.clickElement("xpath", "//span[contains(text(),'Booking List')]");
+					Sync.waitElementPresent("xpath","//div[contains(@class,'MuiListItemText-root')]//span[text()='Bus Booking List']");
+					Common.clickElement("xpath","//div[contains(@class,'MuiListItemText-root')]//span[text()='Bus Booking List']");
+					
+				}
+				catch(Exception |Error e )
+				{
+					e.printStackTrace();
+					Assert.fail();
+				}
+				
+			}
 }

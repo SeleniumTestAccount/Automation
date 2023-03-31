@@ -18,6 +18,7 @@ public class FP_019_Bus_Booking_List {
 			FlyPegion.verifyHomePage();
 			FlyPegion.click_Login();
 			FlyPegion.login_Details("Account");
+			FlyPegion.Bus_Booking_List("bus booking list");
 			
 			
 		} catch (Exception e) {

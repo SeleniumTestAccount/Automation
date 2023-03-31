@@ -18,6 +18,7 @@ public class FP_018_Air_Booking_List {
 			FlyPegion.verifyHomePage();
 			FlyPegion.click_Login();
 			FlyPegion.login_Details("Account");
+			FlyPegion.Air_Booking_List("Air Booking list");
 			
 			
 		} catch (Exception e) {
