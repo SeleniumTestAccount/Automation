@@ -13,7 +13,7 @@ public class FP_021_Transactions {
 	FlyPegionHelper FlyPegion = new FlyPegionHelper(datafile, "Transactions");
 
 	@Test(retryAnalyzer = Utilities.RetryAnalyzer.class)
-	public void Verify_Flight_Booking_Functionality() {
+	public void Verify_Transactions_Functionality() {
 		try {
 			FlyPegion.verifyHomePage();
 			FlyPegion.click_Login();
