@@ -4,7 +4,7 @@
         <listener class-name="Utilities.TestListener"/>
     </listeners>
     
-      	    <test name="Test_FP_001_Login_And_Logout" testid="FP-001" priority="P1" description="This script will cover validating Login and Logout Functionality">
+      	     <test name="Test_FP_001_Login_And_Logout" testid="FP-001" priority="P1" description="This script will cover validating Login and Logout Functionality">
 		<classes>
 			<class name="TestExecute.Flypegion.FP_001_Login_And_Logout" />
 		</classes>
@@ -82,17 +82,27 @@
 			<class name="TestExecute.Flypegion.FP_015_Account_Profile_Update" />
 		</classes>
 	</test>
-		  <test name="Test_FP_016_Flight_Booking" testid="FP-016" priority="P1" description="This script will cover validating Flight search, Flight Filters, updating details, Payment Page">
+		<!--    <test name="Test_FP_016_Flight_Booking" testid="FP-016" priority="P1" description="This script will cover validating Flight search, Flight Filters, updating details, Payment Page">
 		<classes>
 			<class name="TestExecute.Flypegion.FP_016_Flight_Booking" />
 		</classes>
-	</test>  
+	</test>   -->
 	 <test name="Test_FP_017_MarkUps_Commission" testid="FP-017" priority="P1" description="This script will cover validating Set MarkUps page and Commission Detials page">
 		<classes>
 			<class name="TestExecute.Flypegion.FP_017_MarkUps_Commission" />
 		</classes>
 	</test>  
-	
+	<test name="Test_FP_018_Air_Booking_List" testid="FP-018" priority="P1" description="This script will cover validating Air Booking Transactions List ">
+		<classes>
+			<class name="TestExecute.Flypegion.FP_018_Air_Booking_List" />
+		</classes>
+	</test> 
+	<test name="Test_FP_019_Bus_Booking_List" testid="FP-019" priority="P1" description="This script will cover validating Bus Booking Transactions List ">
+		<classes>
+			<class name="TestExecute.Flypegion.FP_019_Bus_Booking_List" />
+		</classes>
+	</test> 
+        
 	 <test name="Test_FP_021_Transactions" testid="FP-021" priority="P1" description="This script will cover validating Transactions ">
 		<classes>
 			<class name="TestExecute.Flypegion.FP_021_Transactions" />
@@ -103,5 +113,5 @@
 			<class name="TestExecute.Flypegion.FP_022_Top_Bus_Routes" />
 		</classes>
 	</test> 
-        </suite>  
+	 </suite> 
         

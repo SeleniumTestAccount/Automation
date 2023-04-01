@@ -1576,7 +1576,7 @@ public class FlyPegionHelper {
 			}
 			
 			public void Air_Booking_List(String Dataset) {
-				// TODO Auto-generated method stub
+				
 				String tranid=data.get(Dataset).get("Transaction ID");
 				try
 				{
@@ -1584,8 +1584,17 @@ public class FlyPegionHelper {
 					Common.clickElement("xpath", "//span[contains(text(),'Booking List')]");
 					Sync.waitElementPresent("xpath","//div[contains(@class,'MuiListItemText-root')]//span[text()='Air Booking List']");
 					Common.clickElement("xpath","//div[contains(@class,'MuiListItemText-root')]//span[text()='Air Booking List']");
+
+					String Airlist=Common.findElement("xpath","//h1[text()]").getText();
+					Common.assertionCheckwithReport(Airlist.contains(Airlist),
+							"To validate the Navigation to Air Booking list page ",
+							"After clicking on the Air Booking list button should display Air Booking list Page",
+							"Sucessfully Air Booking list page has been displayed",
+							"Failed to Display the Air Booking list page ");
 					Sync.waitElementPresent("xpath", "(//button[@type='button'])[2]");
 					Common.clickElement("xpath", "(//button[@type='button'])[2]");
+					Common.clickElement("xpath", "//button[@aria-label='Previous month']");
+					Thread.sleep(3000);
 					Common.clickElement("xpath", "//button[@aria-label='Mar 16, 2023']");
 					Common.clickElement("xpath", "//input[@id='bookinngId']");
 					Common.textBoxInput("xpath", "//input[@id='bookinngId']", tranid);
@@ -1594,7 +1603,7 @@ public class FlyPegionHelper {
 					String TranscationNumber=Common.findElement("xpath","(//th[@scope='row']//a)[1]").getText();
 					Common.assertionCheckwithReport(TranscationNumber.contains(TranscationNumber),
 							"To validate the transaction id in search results",
-							" After clicking on the search button transaction id should display",
+							"After clicking on the search button transaction id should display",
 							"Sucessfully Transaction Id has been displayed",
 							"Failed to Display the transaction id");
 					
@@ -1603,7 +1612,7 @@ public class FlyPegionHelper {
 				{
 					e.printStackTrace();
 					ExtenantReportUtils.addFailedLog("To validate the transaction id in search results",
-							" After clicking on the search button transaction id should display",
+							"After clicking on the search button transaction id should display",
 							"Unable to Display the transaction id",
 							Common.getscreenShotPathforReport("Failed to Display the transaction id"));
 					Assert.fail();
@@ -1612,7 +1621,7 @@ public class FlyPegionHelper {
 			}
 
 			public void Bus_Booking_List(String Dataset) {
-				// TODO Auto-generated method stub
+				String LeavingFrom=data.get(Dataset).get("LeavingFrom");
 				try
 				{
 					Sync.waitElementPresent("xpath", "//span[contains(text(),'Booking List')]");
@@ -1620,10 +1629,35 @@ public class FlyPegionHelper {
 					Sync.waitElementPresent("xpath","//div[contains(@class,'MuiListItemText-root')]//span[text()='Bus Booking List']");
 					Common.clickElement("xpath","//div[contains(@class,'MuiListItemText-root')]//span[text()='Bus Booking List']");
 					
+					String Bookinglist=Common.findElement("xpath","//h1[text()]").getText();
+					Common.assertionCheckwithReport(Bookinglist.contains(Bookinglist),
+							"To validate the Navigation to Bus Booking list page ",
+							"After clicking on the Bus Booking list button should display Bus Booking list Page",
+							"Sucessfully Bus Booking list page has been displayed",
+							"Failed to Display the Bus Booking list page");
+					Sync.waitElementPresent("xpath", "(//button[@type='button'])[2]");
+					Common.clickElement("xpath", "(//button[@type='button'])[2]");
+					Common.clickElement("xpath", "//button[@aria-label='Previous month']");
+					Thread.sleep(3000);
+					Common.clickElement("xpath", "//button[@aria-label='Mar 16, 2023']");
+					Common.clickElement("xpath", "//input[@id='leavingFrom']");
+					Common.textBoxInput("xpath", "//input[@id='leavingFrom']", LeavingFrom);
+					Common.clickElement("xpath", "//button[text()='Search']");
+					Thread.sleep(4000);
+					String Leaving=Common.findElement("xpath","(//th[text()='Hyderabad'])[1]").getText();
+					Common.assertionCheckwithReport(Leaving.contains(Leaving),
+							"To validate the Bus Booking list in search results",
+							"After clicking on the search button Bus Booking list should display",
+							"Sucessfully Bus Booking list  has been displayed",
+							"Failed to Display the Bus Booking list");
 				}
 				catch(Exception |Error e )
 				{
 					e.printStackTrace();
+					ExtenantReportUtils.addFailedLog("To validate the Bus Booking list in search results",
+							"After clicking on the search button Bus Booking list should display",
+							"Unable to Display the Bus Booking list",
+							Common.getscreenShotPathforReport("Failed to Display the Bus Booking list"));
 					Assert.fail();
 				}
 				

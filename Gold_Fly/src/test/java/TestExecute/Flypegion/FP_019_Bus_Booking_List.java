@@ -28,7 +28,7 @@ public class FP_019_Bus_Booking_List {
 
 	@AfterTest
 	public void clearBrowser() {
-//		Common.closeAll();
+		Common.closeAll();
 
 	}
 
