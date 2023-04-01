@@ -799,6 +799,9 @@ public class FlyPegionHelper {
 			try {
 				
 				Common.clickElement("xpath", "(//button[contains(@aria-label,'Choose date')])[1]");
+				
+				Common.clickElement("xpath", "//button[@aria-label='Previous month']");
+				Thread.sleep(3000);
 				 Common.clickElement("xpath", "//button[@aria-label='Mar 20, 2023']");
 //				Common.textBoxInput("xpath", "(//input[@placeholder='yyyy/mm/dd'])[1]", "2023/03/05");
 				Common.textBoxInput("xpath", "(//input[@placeholder='yyyy/mm/dd'])[2]", "2023/03/28");
@@ -916,7 +919,8 @@ public class FlyPegionHelper {
 				
 //				Common.textBoxInput("xpath", "//input[@placeholder='yyyy/mm/dd']", data.get(Dataset).get("ToDate"));
 				 Common.clickElement("xpath", "//button[contains(@aria-label,'Choose date')]");
-				 Common.clickElement("xpath", "//button[@aria-label='Mar 31, 2023']");
+				 
+				 Common.clickElement("xpath", "//button[@aria-label='Apr 4, 2023']");
 				Thread.sleep(6000);
 				Common.clickElement("xpath", "//button[contains(@class,'BusSearch_busSearchBtn')]");
 				Sync.waitPageLoad(3000);
@@ -1089,9 +1093,12 @@ public class FlyPegionHelper {
 			   Sync.waitElementPresent("xpath", "(//button[text()='SELECT SEAT'])[1]");
 			   Common.clickElement("xpath", "(//button[text()='SELECT SEAT'])[1]");
 			   
-			   Sync.waitElementPresent("xpath", "//input[@name='boardingPoint' and contains(@value,'Ashok Nagar (BHEL)')]");
-			   Common.clickElement("xpath", "//input[@name='boardingPoint' and contains(@value,'Ashok Nagar (BHEL)')]");
+//			   Sync.waitElementPresent("xpath", "//input[@name='boardingPoint' and contains(@value,'Ashok Nagar (BHEL)')]");
+//			   Common.clickElement("xpath", "//input[@name='boardingPoint' and contains(@value,'Ashok Nagar (BHEL)')]");
+			 
 			   
+			   Sync.waitElementPresent("xpath", "//input[@name='boardingPoint' and contains(@value,'K.P.H.B')]");
+			   Common.clickElement("xpath", "//input[@name='boardingPoint' and contains(@value,'K.P.H.B')]");
 			   Common.clickElement("xpath", "//input[@name='droppingPoint' and contains(@value,'Vijayawada')]");
 			   Thread.sleep(2000);
 			   Sync.waitElementPresent("xpath", "(//div[contains(@class,'BusSeat_seat__7XmpE BusSeat_availableSeat_')]/small)[3]");
@@ -1543,6 +1550,8 @@ public class FlyPegionHelper {
 					Common.clickElement("xpath","//div[contains(@class,'MuiListItemText-root')]//span[text()='Transactions']");
 					Sync.waitElementPresent("xpath", "(//button[@type='button'])[2]");
 					Common.clickElement("xpath", "(//button[@type='button'])[2]");
+					Common.clickElement("xpath", "//button[@aria-label='Previous month']");
+					Thread.sleep(3000);
 					Common.clickElement("xpath", "//button[@aria-label='Mar 1, 2023']");
 					Sync.waitElementPresent("xpath", "//input[@id='txnId']");
 					Common.textBoxInput("xpath", "//input[@id='txnId']", TrID);
